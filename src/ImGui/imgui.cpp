@@ -5078,6 +5078,73 @@ static inline bool IsWindowContentHoverable(ImGuiWindow* window)
     return true;
 }
 
+void ImGui::Canvas(const char* label, const ImVec2& size, void (*drawCallback)(const ImDrawList*,const ImDrawCmd* cmd))
+{
+    ImGuiWindow* window = GetCurrentWindow();
+    if (window->SkipItems)
+        return;
+
+    ImGuiState& g = *GImGui;
+    const ImGuiStyle& style = g.Style;
+    const ImGuiID id = window->GetID(label);
+
+    ImVec2 pos = window->DC.CursorPos;
+
+    const ImRect bb(pos, pos + size);
+    ItemSize(bb, style.FramePadding.y);
+    if (!ItemAdd(bb, &id))
+        return;
+
+    // Behavior
+    bool pressed = false;
+    const bool hovered = IsHovered(bb, id, true);
+    if (hovered)
+    {
+        g.HoveredId = id;
+        if ((!g.IO.KeyCtrl && !g.IO.KeyShift && !g.IO.KeyAlt))
+        {
+            if (g.IO.MouseClicked[0])
+            {
+                SetActiveID(id, window);
+                FocusWindow(window);
+            }
+            // else if (g.IO.MouseReleased[0] && (flags & ImGuiButtonFlags_PressedOnRelease))
+            // {
+            //     pressed = true;
+            //     SetActiveID(0);
+            // }
+            // else if ((flags & ImGuiButtonFlags_Repeat) && g.ActiveId == id && ImGui::IsMouseClicked(0, true))
+            // {
+            //     pressed = true;
+            // }
+        }
+    } else if (g.ActiveId == id) {
+        if (g.IO.MouseClicked[0])
+        {
+            SetActiveID(0);
+        }
+    }
+
+    bool held = false;
+    if (g.ActiveId == id)
+    {
+        g.ActiveIdIsFocusedOnly = !g.IO.MouseDown[0];
+        if (g.IO.MouseDown[0])
+        {
+            held = true;
+        }
+    }
+
+    const ImU32 col = window->Color(ImGuiCol_ButtonActive);
+    // RenderFrame(bb.Min, bb.Max, col, true, style.FrameRounding);
+    ImVec2 *bound = new ImVec2[2];
+    bound[0] = bb.Min;
+    bound[1] = bb.Max;
+    window->DrawList->AddCallback(drawCallback,bound);
+    // drawCallback(bb.Min, bb.Max);
+
+}
+
 bool ImGui::ButtonBehavior(const ImRect& bb, ImGuiID id, bool* out_hovered, bool* out_held, bool allow_key_modifiers, ImGuiButtonFlags flags)
 {
     ImGuiState& g = *GImGui;

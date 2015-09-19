@@ -16,6 +16,7 @@
 #include <stddef.h>         // ptrdiff_t, NULL
 #include <stdlib.h>         // NULL, malloc, free, qsort, atoi
 #include <string.h>         // memset, memmove, memcpy, strlen, strchr, strcpy, strcmp
+#include <functional>       // std::function
 
 #define IMGUI_VERSION       "1.46 WIP"
 
@@ -242,6 +243,7 @@ namespace ImGui
     IMGUI_API void          Bullet();
     IMGUI_API void          BulletText(const char* fmt, ...) IM_PRINTFARGS(1);
     IMGUI_API void          BulletTextV(const char* fmt, va_list args);
+    IMGUI_API void          Canvas(const char* label, const ImVec2& size = ImVec2(0,0), void (*drawCallback)(const ImDrawList*,const ImDrawCmd* cmd) = NULL);
     IMGUI_API bool          Button(const char* label, const ImVec2& size = ImVec2(0,0));
     IMGUI_API bool          SmallButton(const char* label);
     IMGUI_API bool          InvisibleButton(const char* str_id, const ImVec2& size);
