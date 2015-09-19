@@ -52,11 +52,11 @@ int main(int, char**)
 
     // Load Fonts
     // (see extra_fonts/README.txt for more details)
-    //ImGuiIO& io = ImGui::GetIO();
+    ImGuiIO& io = ImGui::GetIO();
     //io.Fonts->AddFontDefault();
-    //io.Fonts->AddFontFromFileTTF("../../extra_fonts/Cousine-Regular.ttf", 15.0f);
-    //io.Fonts->AddFontFromFileTTF("../../extra_fonts/DroidSans.ttf", 16.0f);
-    //io.Fonts->AddFontFromFileTTF("../../extra_fonts/ProggyClean.ttf", 13.0f);
+    // io.Fonts->AddFontFromFileTTF("../extra_fonts/Cousine-Regular.ttf", 15.0f);
+    io.Fonts->AddFontFromFileTTF("../extra_fonts/DroidSans.ttf", 16.0f);
+    // io.Fonts->AddFontFromFileTTF("../extra_fonts/ProggyClean.ttf", 13.0f);
     //io.Fonts->AddFontFromFileTTF("../../extra_fonts/ProggyTiny.ttf", 10.0f);
     //io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\ArialUni.ttf", 18.0f, NULL, io.Fonts->GetGlyphRangesJapanese());
 
@@ -86,22 +86,38 @@ int main(int, char**)
             static float f = 0.0f;
             ImGui::Text("Hello, world!");
             ImGui::InputText("Hello input", lol, 100);
-            // if (ImGui::IsItemHovered()) {
-            //     std::cout << "/* message */" << std::endl;
+            if (ImGui::IsItemActive()) {
+                std::cout << "Input active" << std::endl;
+            }
+            // if (ImGui::IsKeyDown('a')) {
+            //     std::cout << "Key down: 'a'" << std::endl;
             // }
-            if (ImGui::IsItemActive() && ImGui::IsMouseDragging()) {
-                std::cout << "active" << std::endl;
-            }
-            if (ImGui::IsItemHovered() && ImGui::IsMouseReleased(0)) {
-                std::cout << "released" << std::endl;
-            }
-            if (ImGui::IsItemHoveredRect() && ImGui::IsMouseReleased(0)) {
-                std::cout << "released" << std::endl;
-            }
+            // if (ImGui::IsItemActive() && ImGui::IsMouseDragging()) {
+            //     std::cout << "active" << std::endl;
+            // }
+            // if (ImGui::IsItemHovered() && ImGui::IsMouseReleased(0)) {
+            //     std::cout << "released" << std::endl;
+            // }
+            // if (ImGui::IsItemHoveredRect() && ImGui::IsMouseReleased(0)) {
+            //     std::cout << "released" << std::endl;
+            // }
 
             ImGui::SliderFloat("float", &f, 0.0f, 1.0f);
             ImGui::ColorEdit3("clear color", (float*)&clear_color);
             if (ImGui::Button("Test Window")) show_test_window ^= 1;
+            // if (ImGui::IsItemActive()) {
+            //     std::cout << "Item active" << std::endl;
+            // }
+            // std::cout << "a" << (unsigned int)'a' << std::endl;
+            for (size_t i = 0; i < ImGui::GetIO().InputCharacters[i]; i++) {
+                std::cout << (char)ImGui::GetIO().InputCharacters[i];
+            } if (ImGui::GetIO().InputCharacters[0]) {
+                std::cout << "" << std::endl;
+            }
+
+            if (ImGui::IsKeyDown((unsigned int)'a')) {
+                std::cout << "Key down: 'a'" << std::endl;
+            }
 
             if (ImGui::Button("Another Window")) show_another_window ^= 1;
             ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
