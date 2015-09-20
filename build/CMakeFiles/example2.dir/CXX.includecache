@@ -72,8 +72,14 @@ memory.h
 OCGui/Widget.h
 -
 
+../include/OCGui/Events.h
+ImGui/imgui.h
+-
+
 ../include/OCGui/OpenGLCanvas.h
 OCGui/Widget.h
+-
+functional
 -
 
 ../include/OCGui/Text.h
@@ -89,9 +95,13 @@ GL/gl3w.h
 -
 GLFW/glfw3.h
 -
+iostream
+-
 string
 -
 vector
+-
+OCGui/Events.h
 -
 
 ../include/OCGui/Window.h

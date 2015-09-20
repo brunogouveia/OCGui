@@ -13,6 +13,9 @@ namespace OCGui
 
         virtual void Draw();
 
+        Vec2 GetFramebufferSize();
+        Vec2 GetWindowSize();
+
         inline void HandlEvents()      { glfwPollEvents(); }
         inline bool IsCloseRequested() { return glfwWindowShouldClose(m_window); }
         inline void SwapBuffers()      { glfwSwapBuffers(m_window); }
@@ -21,6 +24,7 @@ namespace OCGui
         GLFWwindow* m_window;
         int         m_width;
         int         m_height;
+        Widget*     m_childBeingDragged;
     };
 }
 

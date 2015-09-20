@@ -133,101 +133,101 @@ int main(int, char**)
             if (ImGui::Button("Another Window")) show_another_window ^= 1;
             ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
-            ImGui::Canvas("Canvas Test", ImVec2(500,200), [] (const ImDrawList*,const ImDrawCmd* cmd) {
-                ImVec2 min = ((ImVec2*)cmd->UserCallbackData)[0];
-                ImVec2 max = ((ImVec2*)cmd->UserCallbackData)[1];
-                delete (ImVec2*)cmd->UserCallbackData;
-                double mx, my;
-        		int winWidth = 1280, winHeight = 720;
-        		int fbWidth = 2560, fbHeight = 1440;
-        		float pxRatio = 2;
-
-        		// glfwGetCursorPos(window, &mx, &my);
-        		// glfwGetWindowSize(window, &winWidth, &winHeight);
-        		// glfwGetFramebufferSize(window, &fbWidth, &fbHeight);
-        		// // Calculate pixel ration for hi-dpi devices.
-        		// pxRatio = (float)fbWidth / (float)winWidth;
-
-        		// Update and render
-        		// glViewport(0, 0, fbWidth, fbHeight);
-        		// glClearColor(0,0,0,1);
-        		// glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT|GL_STENCIL_BUFFER_BIT);
-                min.x *= pxRatio;
-                min.y *= pxRatio;
-                max.x *= pxRatio;
-                max.y *= pxRatio;
-
-                glViewport(min.x, fbHeight - max.y, max.x - min.x, max.y - min.y);
-                // Create Vertex Array Object
-                GLuint vao;
-                glGenVertexArrays(1, &vao);
-                glBindVertexArray(vao);
-
-                // std::cout << "vao: " << vao << std::endl;
-
-                // Create a Vertex Buffer Object and copy the vertex data to it
-                GLuint vbo;
-                glGenBuffers(1, &vbo);
-
-                GLfloat vertices[] = {
-                    -1.0f,  1.0f, 1.0f, 0.0f, 0.0f, // Top-left
-                     1.0f,  1.0f, 0.0f, 1.0f, 0.0f, // Top-right
-                     1.0f, -1.0f, 0.0f, 0.0f, 1.0f, // Bottom-right
-                    -1.0f, -1.0f, 1.0f, 1.0f, 1.0f  // Bottom-left
-                };
-
-                glBindBuffer(GL_ARRAY_BUFFER, vbo);
-                glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-                // Create an element array
-                GLuint ebo;
-                glGenBuffers(1, &ebo);
-
-                GLuint elements[] = {
-                    0, 1, 2,
-                    2, 3, 0
-                };
-
-                glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-                glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements, GL_STATIC_DRAW);
-
-                // Create and compile the vertex shader
-                GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-                glShaderSource(vertexShader, 1, &vertexSource, NULL);
-                glCompileShader(vertexShader);
-
-                // Create and compile the fragment shader
-                GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-                glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
-                glCompileShader(fragmentShader);
-
-                // Link the vertex and fragment shader into a shader program
-                GLuint shaderProgram = glCreateProgram();
-                glAttachShader(shaderProgram, vertexShader);
-                glAttachShader(shaderProgram, fragmentShader);
-                glBindFragDataLocation(shaderProgram, 0, "outColor");
-                glLinkProgram(shaderProgram);
-                glUseProgram(shaderProgram);
-
-                // Specify the layout of the vertex data
-                GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
-                // std::cout << "posAttrib: " << posAttrib << std::endl;
-                // std::cout << "posAttrib: " << glGetAttribLocation(shaderProgram, "color") << std::endl;
-                glEnableVertexAttribArray(posAttrib);
-                glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), 0);
-
-                GLint colAttrib = glGetAttribLocation(shaderProgram, "color");
-                glEnableVertexAttribArray(colAttrib);
-                glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (void*)(2 * sizeof(GLfloat)));
-                // Clear the screen to black
-                // glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
-                // glClear(GL_COLOR_BUFFER_BIT);
-
-                // Draw a rectangle from the 2 triangles using 6 indices
-                glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-                glViewport(0,0,fbWidth,fbHeight);
-            });
+            // ImGui::Canvas("Canvas Test", ImVec2(500,200), [] (const ImDrawList*,const ImDrawCmd* cmd) {
+            //     ImVec2 min = ((ImVec2*)cmd->UserCallbackData)[0];
+            //     ImVec2 max = ((ImVec2*)cmd->UserCallbackData)[1];
+            //     delete (ImVec2*)cmd->UserCallbackData;
+            //     double mx, my;
+        	// 	int winWidth = 1280, winHeight = 720;
+        	// 	int fbWidth = 2560, fbHeight = 1440;
+        	// 	float pxRatio = 2;
+            //
+        	// 	// glfwGetCursorPos(window, &mx, &my);
+        	// 	// glfwGetWindowSize(window, &winWidth, &winHeight);
+        	// 	// glfwGetFramebufferSize(window, &fbWidth, &fbHeight);
+        	// 	// // Calculate pixel ration for hi-dpi devices.
+        	// 	// pxRatio = (float)fbWidth / (float)winWidth;
+            //
+        	// 	// Update and render
+        	// 	// glViewport(0, 0, fbWidth, fbHeight);
+        	// 	// glClearColor(0,0,0,1);
+        	// 	// glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT|GL_STENCIL_BUFFER_BIT);
+            //     min.x *= pxRatio;
+            //     min.y *= pxRatio;
+            //     max.x *= pxRatio;
+            //     max.y *= pxRatio;
+            //
+            //     glViewport(min.x, fbHeight - max.y, max.x - min.x, max.y - min.y);
+            //     // Create Vertex Array Object
+            //     GLuint vao;
+            //     glGenVertexArrays(1, &vao);
+            //     glBindVertexArray(vao);
+            //
+            //     // std::cout << "vao: " << vao << std::endl;
+            //
+            //     // Create a Vertex Buffer Object and copy the vertex data to it
+            //     GLuint vbo;
+            //     glGenBuffers(1, &vbo);
+            //
+            //     GLfloat vertices[] = {
+            //         -1.0f,  1.0f, 1.0f, 0.0f, 0.0f, // Top-left
+            //          1.0f,  1.0f, 0.0f, 1.0f, 0.0f, // Top-right
+            //          1.0f, -1.0f, 0.0f, 0.0f, 1.0f, // Bottom-right
+            //         -1.0f, -1.0f, 1.0f, 1.0f, 1.0f  // Bottom-left
+            //     };
+            //
+            //     glBindBuffer(GL_ARRAY_BUFFER, vbo);
+            //     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+            //
+            //     // Create an element array
+            //     GLuint ebo;
+            //     glGenBuffers(1, &ebo);
+            //
+            //     GLuint elements[] = {
+            //         0, 1, 2,
+            //         2, 3, 0
+            //     };
+            //
+            //     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+            //     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements, GL_STATIC_DRAW);
+            //
+            //     // Create and compile the vertex shader
+            //     GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+            //     glShaderSource(vertexShader, 1, &vertexSource, NULL);
+            //     glCompileShader(vertexShader);
+            //
+            //     // Create and compile the fragment shader
+            //     GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+            //     glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
+            //     glCompileShader(fragmentShader);
+            //
+            //     // Link the vertex and fragment shader into a shader program
+            //     GLuint shaderProgram = glCreateProgram();
+            //     glAttachShader(shaderProgram, vertexShader);
+            //     glAttachShader(shaderProgram, fragmentShader);
+            //     glBindFragDataLocation(shaderProgram, 0, "outColor");
+            //     glLinkProgram(shaderProgram);
+            //     glUseProgram(shaderProgram);
+            //
+            //     // Specify the layout of the vertex data
+            //     GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
+            //     // std::cout << "posAttrib: " << posAttrib << std::endl;
+            //     // std::cout << "posAttrib: " << glGetAttribLocation(shaderProgram, "color") << std::endl;
+            //     glEnableVertexAttribArray(posAttrib);
+            //     glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), 0);
+            //
+            //     GLint colAttrib = glGetAttribLocation(shaderProgram, "color");
+            //     glEnableVertexAttribArray(colAttrib);
+            //     glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (void*)(2 * sizeof(GLfloat)));
+            //     // Clear the screen to black
+            //     // glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
+            //     // glClear(GL_COLOR_BUFFER_BIT);
+            //
+            //     // Draw a rectangle from the 2 triangles using 6 indices
+            //     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+            //
+            //     glViewport(0,0,fbWidth,fbHeight);
+            // });
             if (ImGui::IsItemActive()) {
                 std::cout << "Canvas active" << std::endl;
             }

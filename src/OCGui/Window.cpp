@@ -10,7 +10,8 @@ namespace OCGui
     Window::Window(std::string&& label, int width, int height) :
         Widget(std::move(label)),
         m_width(width),
-        m_height(height)
+        m_height(height),
+        m_childBeingDragged(NULL)
     {
         // Setup window
         glfwSetErrorCallback(error_callback);
@@ -57,10 +58,51 @@ namespace OCGui
         for (std::vector<Widget*>::iterator child = m_children.begin(); child != m_children.end(); child++)
         {
             (*child)->Draw();
+
+            if (ImGui::IsItemHovered()) {
+                if (ImGui::IsMouseClicked(0)) {
+                    (*child)->OnMouseClick(MouseEvent());
+                }
+                else if (ImGui::IsMouseDown(0)) {
+                    (*child)->OnMouseDown(MouseEvent());
+                }
+                else if (ImGui::IsMouseReleased(0))
+                {
+                    (*child)->OnMouseRelease(MouseEvent());
+                }
+
+                // Check for drop event
+                if(m_childBeingDragged)
+                {
+                    if (m_childBeingDragged != (*child))
+                        (*child)->OnDrop(DropEvent(m_childBeingDragged));
+                    m_childBeingDragged = NULL;
+                }
+
+            }
+
+            if (ImGui::IsItemActive() && ImGui::IsMouseDragging()) {
+                (*child)->OnDrag(DragEvent(ImGui::GetMouseDragDelta()));
+                m_childBeingDragged = (*child);
+            }
         }
 
         ImGui::Render();
 
+    }
+
+    Vec2 Window::GetFramebufferSize()
+    {
+        int x, y;
+        glfwGetFramebufferSize(m_window, &x, &y);
+        return Vec2(x, y);
+    }
+
+    Vec2 Window::GetWindowSize()
+    {
+        int x, y;
+        glfwGetWindowSize(m_window, &x, &y);
+        return Vec2(x, y);
     }
 
 }
