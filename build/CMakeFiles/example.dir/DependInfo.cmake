@@ -20,6 +20,10 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/Bruno/Downloads/imgui-marota/src/ImGui/imgui_demo.cpp" "/Users/Bruno/Downloads/imgui-marota/build/CMakeFiles/example.dir/src/ImGui/imgui_demo.cpp.o"
   "/Users/Bruno/Downloads/imgui-marota/src/ImGui/imgui_draw.cpp" "/Users/Bruno/Downloads/imgui-marota/build/CMakeFiles/example.dir/src/ImGui/imgui_draw.cpp.o"
   "/Users/Bruno/Downloads/imgui-marota/src/ImGui/imgui_impl_glfw_gl3.cpp" "/Users/Bruno/Downloads/imgui-marota/build/CMakeFiles/example.dir/src/ImGui/imgui_impl_glfw_gl3.cpp.o"
+  "/Users/Bruno/Downloads/imgui-marota/src/OCGui/Button.cpp" "/Users/Bruno/Downloads/imgui-marota/build/CMakeFiles/example.dir/src/OCGui/Button.cpp.o"
+  "/Users/Bruno/Downloads/imgui-marota/src/OCGui/OpenGLCanvas.cpp" "/Users/Bruno/Downloads/imgui-marota/build/CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o"
+  "/Users/Bruno/Downloads/imgui-marota/src/OCGui/Text.cpp" "/Users/Bruno/Downloads/imgui-marota/build/CMakeFiles/example.dir/src/OCGui/Text.cpp.o"
+  "/Users/Bruno/Downloads/imgui-marota/src/OCGui/Window.cpp" "/Users/Bruno/Downloads/imgui-marota/build/CMakeFiles/example.dir/src/OCGui/Window.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 

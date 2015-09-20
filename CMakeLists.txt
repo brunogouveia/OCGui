@@ -8,10 +8,20 @@ add_definitions(
 )
 
 # Lets LOAD app our sources!
-file(GLOB_RECURSE SRCS
+file(GLOB_RECURSE SRCS1
     ${ImGui_SOURCE_DIR}/example.cpp
-	${ImGui_SOURCE_DIR}/src/*.cpp
-	${ImGui_SOURCE_DIR}/src/*.c
+	${ImGui_SOURCE_DIR}/src/ImGui/*.cpp
+	${ImGui_SOURCE_DIR}/src/ImGui/*.c
+	${ImGui_SOURCE_DIR}/src/OCGui/*.cpp
+    ${ImGui_SOURCE_DIR}/libs/gl3w/GL/*.c
+)
+
+# Lets LOAD app our sources!
+file(GLOB_RECURSE SRCS2
+    ${ImGui_SOURCE_DIR}/example2.cpp
+	${ImGui_SOURCE_DIR}/src/ImGui/*.cpp
+	${ImGui_SOURCE_DIR}/src/ImGui/*.c
+	${ImGui_SOURCE_DIR}/src/OCGui/*.cpp
     ${ImGui_SOURCE_DIR}/libs/gl3w/GL/*.c
 )
 
@@ -44,6 +54,8 @@ include_directories(
     ${ImGui_SOURCE_DIR}/libs/gl3w
 )
 
-add_executable (example ${HDRS} ${SRCS})
+add_executable (example ${HDRS} ${SRCS1})
+add_executable (example2 ${HDRS} ${SRCS2})
 
 target_link_libraries(example ${GLFW3_LIBRARIES} "-framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo")
+target_link_libraries(example2 ${GLFW3_LIBRARIES} "-framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo")

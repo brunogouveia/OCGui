@@ -123,6 +123,19 @@ example/fast:
 	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/build
 .PHONY : example/fast
 
+#=============================================================================
+# Target rules for targets named example2
+
+# Build rule for target.
+example2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 example2
+.PHONY : example2
+
+# fast build rule for target.
+example2/fast:
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/build
+.PHONY : example2/fast
+
 example.o: example.cpp.o
 
 .PHONY : example.o
@@ -150,6 +163,33 @@ example.cpp.s:
 	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/example.cpp.s
 .PHONY : example.cpp.s
 
+example2.o: example2.cpp.o
+
+.PHONY : example2.o
+
+# target to build an object file
+example2.cpp.o:
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/example2.cpp.o
+.PHONY : example2.cpp.o
+
+example2.i: example2.cpp.i
+
+.PHONY : example2.i
+
+# target to preprocess a source file
+example2.cpp.i:
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/example2.cpp.i
+.PHONY : example2.cpp.i
+
+example2.s: example2.cpp.s
+
+.PHONY : example2.s
+
+# target to generate assembly for a file
+example2.cpp.s:
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/example2.cpp.s
+.PHONY : example2.cpp.s
+
 libs/gl3w/GL/gl3w.o: libs/gl3w/GL/gl3w.c.o
 
 .PHONY : libs/gl3w/GL/gl3w.o
@@ -157,6 +197,7 @@ libs/gl3w/GL/gl3w.o: libs/gl3w/GL/gl3w.c.o
 # target to build an object file
 libs/gl3w/GL/gl3w.c.o:
 	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/libs/gl3w/GL/gl3w.c.o
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/libs/gl3w/GL/gl3w.c.o
 .PHONY : libs/gl3w/GL/gl3w.c.o
 
 libs/gl3w/GL/gl3w.i: libs/gl3w/GL/gl3w.c.i
@@ -166,6 +207,7 @@ libs/gl3w/GL/gl3w.i: libs/gl3w/GL/gl3w.c.i
 # target to preprocess a source file
 libs/gl3w/GL/gl3w.c.i:
 	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/libs/gl3w/GL/gl3w.c.i
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/libs/gl3w/GL/gl3w.c.i
 .PHONY : libs/gl3w/GL/gl3w.c.i
 
 libs/gl3w/GL/gl3w.s: libs/gl3w/GL/gl3w.c.s
@@ -175,6 +217,7 @@ libs/gl3w/GL/gl3w.s: libs/gl3w/GL/gl3w.c.s
 # target to generate assembly for a file
 libs/gl3w/GL/gl3w.c.s:
 	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/libs/gl3w/GL/gl3w.c.s
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/libs/gl3w/GL/gl3w.c.s
 .PHONY : libs/gl3w/GL/gl3w.c.s
 
 src/ImGui/imgui.o: src/ImGui/imgui.cpp.o
@@ -184,6 +227,7 @@ src/ImGui/imgui.o: src/ImGui/imgui.cpp.o
 # target to build an object file
 src/ImGui/imgui.cpp.o:
 	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/ImGui/imgui.cpp.o
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/ImGui/imgui.cpp.o
 .PHONY : src/ImGui/imgui.cpp.o
 
 src/ImGui/imgui.i: src/ImGui/imgui.cpp.i
@@ -193,6 +237,7 @@ src/ImGui/imgui.i: src/ImGui/imgui.cpp.i
 # target to preprocess a source file
 src/ImGui/imgui.cpp.i:
 	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/ImGui/imgui.cpp.i
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/ImGui/imgui.cpp.i
 .PHONY : src/ImGui/imgui.cpp.i
 
 src/ImGui/imgui.s: src/ImGui/imgui.cpp.s
@@ -202,6 +247,7 @@ src/ImGui/imgui.s: src/ImGui/imgui.cpp.s
 # target to generate assembly for a file
 src/ImGui/imgui.cpp.s:
 	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/ImGui/imgui.cpp.s
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/ImGui/imgui.cpp.s
 .PHONY : src/ImGui/imgui.cpp.s
 
 src/ImGui/imgui_demo.o: src/ImGui/imgui_demo.cpp.o
@@ -211,6 +257,7 @@ src/ImGui/imgui_demo.o: src/ImGui/imgui_demo.cpp.o
 # target to build an object file
 src/ImGui/imgui_demo.cpp.o:
 	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/ImGui/imgui_demo.cpp.o
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/ImGui/imgui_demo.cpp.o
 .PHONY : src/ImGui/imgui_demo.cpp.o
 
 src/ImGui/imgui_demo.i: src/ImGui/imgui_demo.cpp.i
@@ -220,6 +267,7 @@ src/ImGui/imgui_demo.i: src/ImGui/imgui_demo.cpp.i
 # target to preprocess a source file
 src/ImGui/imgui_demo.cpp.i:
 	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/ImGui/imgui_demo.cpp.i
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/ImGui/imgui_demo.cpp.i
 .PHONY : src/ImGui/imgui_demo.cpp.i
 
 src/ImGui/imgui_demo.s: src/ImGui/imgui_demo.cpp.s
@@ -229,6 +277,7 @@ src/ImGui/imgui_demo.s: src/ImGui/imgui_demo.cpp.s
 # target to generate assembly for a file
 src/ImGui/imgui_demo.cpp.s:
 	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/ImGui/imgui_demo.cpp.s
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/ImGui/imgui_demo.cpp.s
 .PHONY : src/ImGui/imgui_demo.cpp.s
 
 src/ImGui/imgui_draw.o: src/ImGui/imgui_draw.cpp.o
@@ -238,6 +287,7 @@ src/ImGui/imgui_draw.o: src/ImGui/imgui_draw.cpp.o
 # target to build an object file
 src/ImGui/imgui_draw.cpp.o:
 	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/ImGui/imgui_draw.cpp.o
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/ImGui/imgui_draw.cpp.o
 .PHONY : src/ImGui/imgui_draw.cpp.o
 
 src/ImGui/imgui_draw.i: src/ImGui/imgui_draw.cpp.i
@@ -247,6 +297,7 @@ src/ImGui/imgui_draw.i: src/ImGui/imgui_draw.cpp.i
 # target to preprocess a source file
 src/ImGui/imgui_draw.cpp.i:
 	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/ImGui/imgui_draw.cpp.i
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/ImGui/imgui_draw.cpp.i
 .PHONY : src/ImGui/imgui_draw.cpp.i
 
 src/ImGui/imgui_draw.s: src/ImGui/imgui_draw.cpp.s
@@ -256,6 +307,7 @@ src/ImGui/imgui_draw.s: src/ImGui/imgui_draw.cpp.s
 # target to generate assembly for a file
 src/ImGui/imgui_draw.cpp.s:
 	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/ImGui/imgui_draw.cpp.s
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/ImGui/imgui_draw.cpp.s
 .PHONY : src/ImGui/imgui_draw.cpp.s
 
 src/ImGui/imgui_impl_glfw_gl3.o: src/ImGui/imgui_impl_glfw_gl3.cpp.o
@@ -265,6 +317,7 @@ src/ImGui/imgui_impl_glfw_gl3.o: src/ImGui/imgui_impl_glfw_gl3.cpp.o
 # target to build an object file
 src/ImGui/imgui_impl_glfw_gl3.cpp.o:
 	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/ImGui/imgui_impl_glfw_gl3.cpp.o
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/ImGui/imgui_impl_glfw_gl3.cpp.o
 .PHONY : src/ImGui/imgui_impl_glfw_gl3.cpp.o
 
 src/ImGui/imgui_impl_glfw_gl3.i: src/ImGui/imgui_impl_glfw_gl3.cpp.i
@@ -274,6 +327,7 @@ src/ImGui/imgui_impl_glfw_gl3.i: src/ImGui/imgui_impl_glfw_gl3.cpp.i
 # target to preprocess a source file
 src/ImGui/imgui_impl_glfw_gl3.cpp.i:
 	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/ImGui/imgui_impl_glfw_gl3.cpp.i
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/ImGui/imgui_impl_glfw_gl3.cpp.i
 .PHONY : src/ImGui/imgui_impl_glfw_gl3.cpp.i
 
 src/ImGui/imgui_impl_glfw_gl3.s: src/ImGui/imgui_impl_glfw_gl3.cpp.s
@@ -283,7 +337,128 @@ src/ImGui/imgui_impl_glfw_gl3.s: src/ImGui/imgui_impl_glfw_gl3.cpp.s
 # target to generate assembly for a file
 src/ImGui/imgui_impl_glfw_gl3.cpp.s:
 	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/ImGui/imgui_impl_glfw_gl3.cpp.s
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/ImGui/imgui_impl_glfw_gl3.cpp.s
 .PHONY : src/ImGui/imgui_impl_glfw_gl3.cpp.s
+
+src/OCGui/Button.o: src/OCGui/Button.cpp.o
+
+.PHONY : src/OCGui/Button.o
+
+# target to build an object file
+src/OCGui/Button.cpp.o:
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/OCGui/Button.cpp.o
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/OCGui/Button.cpp.o
+.PHONY : src/OCGui/Button.cpp.o
+
+src/OCGui/Button.i: src/OCGui/Button.cpp.i
+
+.PHONY : src/OCGui/Button.i
+
+# target to preprocess a source file
+src/OCGui/Button.cpp.i:
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/OCGui/Button.cpp.i
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/OCGui/Button.cpp.i
+.PHONY : src/OCGui/Button.cpp.i
+
+src/OCGui/Button.s: src/OCGui/Button.cpp.s
+
+.PHONY : src/OCGui/Button.s
+
+# target to generate assembly for a file
+src/OCGui/Button.cpp.s:
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/OCGui/Button.cpp.s
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/OCGui/Button.cpp.s
+.PHONY : src/OCGui/Button.cpp.s
+
+src/OCGui/OpenGLCanvas.o: src/OCGui/OpenGLCanvas.cpp.o
+
+.PHONY : src/OCGui/OpenGLCanvas.o
+
+# target to build an object file
+src/OCGui/OpenGLCanvas.cpp.o:
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/OCGui/OpenGLCanvas.cpp.o
+.PHONY : src/OCGui/OpenGLCanvas.cpp.o
+
+src/OCGui/OpenGLCanvas.i: src/OCGui/OpenGLCanvas.cpp.i
+
+.PHONY : src/OCGui/OpenGLCanvas.i
+
+# target to preprocess a source file
+src/OCGui/OpenGLCanvas.cpp.i:
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.i
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/OCGui/OpenGLCanvas.cpp.i
+.PHONY : src/OCGui/OpenGLCanvas.cpp.i
+
+src/OCGui/OpenGLCanvas.s: src/OCGui/OpenGLCanvas.cpp.s
+
+.PHONY : src/OCGui/OpenGLCanvas.s
+
+# target to generate assembly for a file
+src/OCGui/OpenGLCanvas.cpp.s:
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.s
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/OCGui/OpenGLCanvas.cpp.s
+.PHONY : src/OCGui/OpenGLCanvas.cpp.s
+
+src/OCGui/Text.o: src/OCGui/Text.cpp.o
+
+.PHONY : src/OCGui/Text.o
+
+# target to build an object file
+src/OCGui/Text.cpp.o:
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/OCGui/Text.cpp.o
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/OCGui/Text.cpp.o
+.PHONY : src/OCGui/Text.cpp.o
+
+src/OCGui/Text.i: src/OCGui/Text.cpp.i
+
+.PHONY : src/OCGui/Text.i
+
+# target to preprocess a source file
+src/OCGui/Text.cpp.i:
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/OCGui/Text.cpp.i
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/OCGui/Text.cpp.i
+.PHONY : src/OCGui/Text.cpp.i
+
+src/OCGui/Text.s: src/OCGui/Text.cpp.s
+
+.PHONY : src/OCGui/Text.s
+
+# target to generate assembly for a file
+src/OCGui/Text.cpp.s:
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/OCGui/Text.cpp.s
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/OCGui/Text.cpp.s
+.PHONY : src/OCGui/Text.cpp.s
+
+src/OCGui/Window.o: src/OCGui/Window.cpp.o
+
+.PHONY : src/OCGui/Window.o
+
+# target to build an object file
+src/OCGui/Window.cpp.o:
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/OCGui/Window.cpp.o
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/OCGui/Window.cpp.o
+.PHONY : src/OCGui/Window.cpp.o
+
+src/OCGui/Window.i: src/OCGui/Window.cpp.i
+
+.PHONY : src/OCGui/Window.i
+
+# target to preprocess a source file
+src/OCGui/Window.cpp.i:
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/OCGui/Window.cpp.i
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/OCGui/Window.cpp.i
+.PHONY : src/OCGui/Window.cpp.i
+
+src/OCGui/Window.s: src/OCGui/Window.cpp.s
+
+.PHONY : src/OCGui/Window.s
+
+# target to generate assembly for a file
+src/OCGui/Window.cpp.s:
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/OCGui/Window.cpp.s
+	$(MAKE) -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/src/OCGui/Window.cpp.s
+.PHONY : src/OCGui/Window.cpp.s
 
 # Help Target
 help:
@@ -293,10 +468,14 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... example2"
 	@echo "... example"
 	@echo "... example.o"
 	@echo "... example.i"
 	@echo "... example.s"
+	@echo "... example2.o"
+	@echo "... example2.i"
+	@echo "... example2.s"
 	@echo "... libs/gl3w/GL/gl3w.o"
 	@echo "... libs/gl3w/GL/gl3w.i"
 	@echo "... libs/gl3w/GL/gl3w.s"
@@ -312,6 +491,18 @@ help:
 	@echo "... src/ImGui/imgui_impl_glfw_gl3.o"
 	@echo "... src/ImGui/imgui_impl_glfw_gl3.i"
 	@echo "... src/ImGui/imgui_impl_glfw_gl3.s"
+	@echo "... src/OCGui/Button.o"
+	@echo "... src/OCGui/Button.i"
+	@echo "... src/OCGui/Button.s"
+	@echo "... src/OCGui/OpenGLCanvas.o"
+	@echo "... src/OCGui/OpenGLCanvas.i"
+	@echo "... src/OCGui/OpenGLCanvas.s"
+	@echo "... src/OCGui/Text.o"
+	@echo "... src/OCGui/Text.i"
+	@echo "... src/OCGui/Text.s"
+	@echo "... src/OCGui/Window.o"
+	@echo "... src/OCGui/Window.i"
+	@echo "... src/OCGui/Window.s"
 .PHONY : help
 
 

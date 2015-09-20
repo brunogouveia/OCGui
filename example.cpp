@@ -133,7 +133,7 @@ int main(int, char**)
             if (ImGui::Button("Another Window")) show_another_window ^= 1;
             ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
-            ImGui::Canvas("Canvas Test", ImVec2(100,200), [] (const ImDrawList*,const ImDrawCmd* cmd) {
+            ImGui::Canvas("Canvas Test", ImVec2(500,200), [] (const ImDrawList*,const ImDrawCmd* cmd) {
                 ImVec2 min = ((ImVec2*)cmd->UserCallbackData)[0];
                 ImVec2 max = ((ImVec2*)cmd->UserCallbackData)[1];
                 delete (ImVec2*)cmd->UserCallbackData;
@@ -158,8 +158,6 @@ int main(int, char**)
                 max.y *= pxRatio;
 
                 glViewport(min.x, fbHeight - max.y, max.x - min.x, max.y - min.y);
-                std::cout << "Min: " << min.x << " " << min.y << std::endl;
-                std::cout << "Max: " << max.x << " " << max.y << std::endl;
                 // Create Vertex Array Object
                 GLuint vao;
                 glGenVertexArrays(1, &vao);
@@ -237,20 +235,6 @@ int main(int, char**)
                 std::cout << "Canvas hovered" << std::endl;
             }
         }
-
-        double mx, my;
-        int winWidth, winHeight;
-        int fbWidth, fbHeight;
-        float pxRatio;
-
-        glfwGetCursorPos(window, &mx, &my);
-        glfwGetWindowSize(window, &winWidth, &winHeight);
-        glfwGetFramebufferSize(window, &fbWidth, &fbHeight);
-        // Calculate pixel ration for hi-dpi devices.
-        pxRatio = (float)fbWidth / (float)winWidth;
-        std::cout << "Win: " << winWidth << " " << winHeight << std::endl;
-        std::cout << "Fb : " << fbWidth << " " << fbHeight << std::endl;
-        std::cout << "pxr: " << pxRatio << std::endl;
 
         // // 2. Show another simple window, this time using an explicit Begin/End pair
         // if (show_another_window)

@@ -37,3 +37,39 @@ CMakeFiles/example.dir/src/ImGui/imgui_impl_glfw_gl3.cpp.o: ../libs/gl3w/GL/gl3w
 CMakeFiles/example.dir/src/ImGui/imgui_impl_glfw_gl3.cpp.o: ../libs/gl3w/GL/glcorearb.h
 CMakeFiles/example.dir/src/ImGui/imgui_impl_glfw_gl3.cpp.o: ../src/ImGui/imgui_impl_glfw_gl3.cpp
 
+CMakeFiles/example.dir/src/OCGui/Button.cpp.o: ../include/ImGui/imconfig.h
+CMakeFiles/example.dir/src/OCGui/Button.cpp.o: ../include/ImGui/imgui.h
+CMakeFiles/example.dir/src/OCGui/Button.cpp.o: ../include/ImGui/imgui_impl_glfw_gl3.h
+CMakeFiles/example.dir/src/OCGui/Button.cpp.o: ../include/OCGui/Button.h
+CMakeFiles/example.dir/src/OCGui/Button.cpp.o: ../include/OCGui/Widget.h
+CMakeFiles/example.dir/src/OCGui/Button.cpp.o: ../libs/gl3w/GL/gl3w.h
+CMakeFiles/example.dir/src/OCGui/Button.cpp.o: ../libs/gl3w/GL/glcorearb.h
+CMakeFiles/example.dir/src/OCGui/Button.cpp.o: ../src/OCGui/Button.cpp
+
+CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o: ../include/ImGui/imconfig.h
+CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o: ../include/ImGui/imgui.h
+CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o: ../include/ImGui/imgui_impl_glfw_gl3.h
+CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o: ../include/OCGui/OpenGLCanvas.h
+CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o: ../include/OCGui/Widget.h
+CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o: ../libs/gl3w/GL/gl3w.h
+CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o: ../libs/gl3w/GL/glcorearb.h
+CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o: ../src/OCGui/OpenGLCanvas.cpp
+
+CMakeFiles/example.dir/src/OCGui/Text.cpp.o: ../include/ImGui/imconfig.h
+CMakeFiles/example.dir/src/OCGui/Text.cpp.o: ../include/ImGui/imgui.h
+CMakeFiles/example.dir/src/OCGui/Text.cpp.o: ../include/ImGui/imgui_impl_glfw_gl3.h
+CMakeFiles/example.dir/src/OCGui/Text.cpp.o: ../include/OCGui/Text.h
+CMakeFiles/example.dir/src/OCGui/Text.cpp.o: ../include/OCGui/Widget.h
+CMakeFiles/example.dir/src/OCGui/Text.cpp.o: ../libs/gl3w/GL/gl3w.h
+CMakeFiles/example.dir/src/OCGui/Text.cpp.o: ../libs/gl3w/GL/glcorearb.h
+CMakeFiles/example.dir/src/OCGui/Text.cpp.o: ../src/OCGui/Text.cpp
+
+CMakeFiles/example.dir/src/OCGui/Window.cpp.o: ../include/ImGui/imconfig.h
+CMakeFiles/example.dir/src/OCGui/Window.cpp.o: ../include/ImGui/imgui.h
+CMakeFiles/example.dir/src/OCGui/Window.cpp.o: ../include/ImGui/imgui_impl_glfw_gl3.h
+CMakeFiles/example.dir/src/OCGui/Window.cpp.o: ../include/OCGui/Widget.h
+CMakeFiles/example.dir/src/OCGui/Window.cpp.o: ../include/OCGui/Window.h
+CMakeFiles/example.dir/src/OCGui/Window.cpp.o: ../libs/gl3w/GL/gl3w.h
+CMakeFiles/example.dir/src/OCGui/Window.cpp.o: ../libs/gl3w/GL/glcorearb.h
+CMakeFiles/example.dir/src/OCGui/Window.cpp.o: ../src/OCGui/Window.cpp
+

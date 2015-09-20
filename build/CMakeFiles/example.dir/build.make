@@ -177,9 +177,105 @@ CMakeFiles/example.dir/src/ImGui/imgui_impl_glfw_gl3.cpp.o.provides: CMakeFiles/
 CMakeFiles/example.dir/src/ImGui/imgui_impl_glfw_gl3.cpp.o.provides.build: CMakeFiles/example.dir/src/ImGui/imgui_impl_glfw_gl3.cpp.o
 
 
+CMakeFiles/example.dir/src/OCGui/Button.cpp.o: CMakeFiles/example.dir/flags.make
+CMakeFiles/example.dir/src/OCGui/Button.cpp.o: ../src/OCGui/Button.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Bruno/Downloads/imgui-marota/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/example.dir/src/OCGui/Button.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/example.dir/src/OCGui/Button.cpp.o -c /Users/Bruno/Downloads/imgui-marota/src/OCGui/Button.cpp
+
+CMakeFiles/example.dir/src/OCGui/Button.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example.dir/src/OCGui/Button.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bruno/Downloads/imgui-marota/src/OCGui/Button.cpp > CMakeFiles/example.dir/src/OCGui/Button.cpp.i
+
+CMakeFiles/example.dir/src/OCGui/Button.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example.dir/src/OCGui/Button.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bruno/Downloads/imgui-marota/src/OCGui/Button.cpp -o CMakeFiles/example.dir/src/OCGui/Button.cpp.s
+
+CMakeFiles/example.dir/src/OCGui/Button.cpp.o.requires:
+
+.PHONY : CMakeFiles/example.dir/src/OCGui/Button.cpp.o.requires
+
+CMakeFiles/example.dir/src/OCGui/Button.cpp.o.provides: CMakeFiles/example.dir/src/OCGui/Button.cpp.o.requires
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/OCGui/Button.cpp.o.provides.build
+.PHONY : CMakeFiles/example.dir/src/OCGui/Button.cpp.o.provides
+
+CMakeFiles/example.dir/src/OCGui/Button.cpp.o.provides.build: CMakeFiles/example.dir/src/OCGui/Button.cpp.o
+
+
+CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o: CMakeFiles/example.dir/flags.make
+CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o: ../src/OCGui/OpenGLCanvas.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Bruno/Downloads/imgui-marota/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o -c /Users/Bruno/Downloads/imgui-marota/src/OCGui/OpenGLCanvas.cpp
+
+CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bruno/Downloads/imgui-marota/src/OCGui/OpenGLCanvas.cpp > CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.i
+
+CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bruno/Downloads/imgui-marota/src/OCGui/OpenGLCanvas.cpp -o CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.s
+
+CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o.requires:
+
+.PHONY : CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o.requires
+
+CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o.provides: CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o.requires
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o.provides.build
+.PHONY : CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o.provides
+
+CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o.provides.build: CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o
+
+
+CMakeFiles/example.dir/src/OCGui/Text.cpp.o: CMakeFiles/example.dir/flags.make
+CMakeFiles/example.dir/src/OCGui/Text.cpp.o: ../src/OCGui/Text.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Bruno/Downloads/imgui-marota/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/example.dir/src/OCGui/Text.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/example.dir/src/OCGui/Text.cpp.o -c /Users/Bruno/Downloads/imgui-marota/src/OCGui/Text.cpp
+
+CMakeFiles/example.dir/src/OCGui/Text.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example.dir/src/OCGui/Text.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bruno/Downloads/imgui-marota/src/OCGui/Text.cpp > CMakeFiles/example.dir/src/OCGui/Text.cpp.i
+
+CMakeFiles/example.dir/src/OCGui/Text.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example.dir/src/OCGui/Text.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bruno/Downloads/imgui-marota/src/OCGui/Text.cpp -o CMakeFiles/example.dir/src/OCGui/Text.cpp.s
+
+CMakeFiles/example.dir/src/OCGui/Text.cpp.o.requires:
+
+.PHONY : CMakeFiles/example.dir/src/OCGui/Text.cpp.o.requires
+
+CMakeFiles/example.dir/src/OCGui/Text.cpp.o.provides: CMakeFiles/example.dir/src/OCGui/Text.cpp.o.requires
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/OCGui/Text.cpp.o.provides.build
+.PHONY : CMakeFiles/example.dir/src/OCGui/Text.cpp.o.provides
+
+CMakeFiles/example.dir/src/OCGui/Text.cpp.o.provides.build: CMakeFiles/example.dir/src/OCGui/Text.cpp.o
+
+
+CMakeFiles/example.dir/src/OCGui/Window.cpp.o: CMakeFiles/example.dir/flags.make
+CMakeFiles/example.dir/src/OCGui/Window.cpp.o: ../src/OCGui/Window.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Bruno/Downloads/imgui-marota/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/example.dir/src/OCGui/Window.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/example.dir/src/OCGui/Window.cpp.o -c /Users/Bruno/Downloads/imgui-marota/src/OCGui/Window.cpp
+
+CMakeFiles/example.dir/src/OCGui/Window.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example.dir/src/OCGui/Window.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bruno/Downloads/imgui-marota/src/OCGui/Window.cpp > CMakeFiles/example.dir/src/OCGui/Window.cpp.i
+
+CMakeFiles/example.dir/src/OCGui/Window.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example.dir/src/OCGui/Window.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bruno/Downloads/imgui-marota/src/OCGui/Window.cpp -o CMakeFiles/example.dir/src/OCGui/Window.cpp.s
+
+CMakeFiles/example.dir/src/OCGui/Window.cpp.o.requires:
+
+.PHONY : CMakeFiles/example.dir/src/OCGui/Window.cpp.o.requires
+
+CMakeFiles/example.dir/src/OCGui/Window.cpp.o.provides: CMakeFiles/example.dir/src/OCGui/Window.cpp.o.requires
+	$(MAKE) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/src/OCGui/Window.cpp.o.provides.build
+.PHONY : CMakeFiles/example.dir/src/OCGui/Window.cpp.o.provides
+
+CMakeFiles/example.dir/src/OCGui/Window.cpp.o.provides.build: CMakeFiles/example.dir/src/OCGui/Window.cpp.o
+
+
 CMakeFiles/example.dir/libs/gl3w/GL/gl3w.c.o: CMakeFiles/example.dir/flags.make
 CMakeFiles/example.dir/libs/gl3w/GL/gl3w.c.o: ../libs/gl3w/GL/gl3w.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Bruno/Downloads/imgui-marota/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/example.dir/libs/gl3w/GL/gl3w.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Bruno/Downloads/imgui-marota/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/example.dir/libs/gl3w/GL/gl3w.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/example.dir/libs/gl3w/GL/gl3w.c.o   -c /Users/Bruno/Downloads/imgui-marota/libs/gl3w/GL/gl3w.c
 
 CMakeFiles/example.dir/libs/gl3w/GL/gl3w.c.i: cmake_force
@@ -208,6 +304,10 @@ example_OBJECTS = \
 "CMakeFiles/example.dir/src/ImGui/imgui_demo.cpp.o" \
 "CMakeFiles/example.dir/src/ImGui/imgui_draw.cpp.o" \
 "CMakeFiles/example.dir/src/ImGui/imgui_impl_glfw_gl3.cpp.o" \
+"CMakeFiles/example.dir/src/OCGui/Button.cpp.o" \
+"CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o" \
+"CMakeFiles/example.dir/src/OCGui/Text.cpp.o" \
+"CMakeFiles/example.dir/src/OCGui/Window.cpp.o" \
 "CMakeFiles/example.dir/libs/gl3w/GL/gl3w.c.o"
 
 # External object files for target example
@@ -218,11 +318,15 @@ example: CMakeFiles/example.dir/src/ImGui/imgui.cpp.o
 example: CMakeFiles/example.dir/src/ImGui/imgui_demo.cpp.o
 example: CMakeFiles/example.dir/src/ImGui/imgui_draw.cpp.o
 example: CMakeFiles/example.dir/src/ImGui/imgui_impl_glfw_gl3.cpp.o
+example: CMakeFiles/example.dir/src/OCGui/Button.cpp.o
+example: CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o
+example: CMakeFiles/example.dir/src/OCGui/Text.cpp.o
+example: CMakeFiles/example.dir/src/OCGui/Window.cpp.o
 example: CMakeFiles/example.dir/libs/gl3w/GL/gl3w.c.o
 example: CMakeFiles/example.dir/build.make
 example: /usr/local/lib/libglfw3.a
 example: CMakeFiles/example.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Bruno/Downloads/imgui-marota/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable example"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Bruno/Downloads/imgui-marota/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable example"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/example.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -235,6 +339,10 @@ CMakeFiles/example.dir/requires: CMakeFiles/example.dir/src/ImGui/imgui.cpp.o.re
 CMakeFiles/example.dir/requires: CMakeFiles/example.dir/src/ImGui/imgui_demo.cpp.o.requires
 CMakeFiles/example.dir/requires: CMakeFiles/example.dir/src/ImGui/imgui_draw.cpp.o.requires
 CMakeFiles/example.dir/requires: CMakeFiles/example.dir/src/ImGui/imgui_impl_glfw_gl3.cpp.o.requires
+CMakeFiles/example.dir/requires: CMakeFiles/example.dir/src/OCGui/Button.cpp.o.requires
+CMakeFiles/example.dir/requires: CMakeFiles/example.dir/src/OCGui/OpenGLCanvas.cpp.o.requires
+CMakeFiles/example.dir/requires: CMakeFiles/example.dir/src/OCGui/Text.cpp.o.requires
+CMakeFiles/example.dir/requires: CMakeFiles/example.dir/src/OCGui/Window.cpp.o.requires
 CMakeFiles/example.dir/requires: CMakeFiles/example.dir/libs/gl3w/GL/gl3w.c.o.requires
 
 .PHONY : CMakeFiles/example.dir/requires
