@@ -10,6 +10,8 @@ add_definitions(
 # Lets LOAD app our sources!
 file(GLOB_RECURSE SRCS1
     ${ImGui_SOURCE_DIR}/example.cpp
+	${ImGui_SOURCE_DIR}/src/Blendish/*.c
+	${ImGui_SOURCE_DIR}/src/Blendish/blendish.c
 	${ImGui_SOURCE_DIR}/src/ImGui/*.cpp
 	${ImGui_SOURCE_DIR}/src/ImGui/*.c
 	${ImGui_SOURCE_DIR}/src/OCGui/*.cpp
@@ -19,6 +21,8 @@ file(GLOB_RECURSE SRCS1
 # Lets LOAD app our sources!
 file(GLOB_RECURSE SRCS2
     ${ImGui_SOURCE_DIR}/example2.cpp
+	${ImGui_SOURCE_DIR}/src/Blendish/*.c
+	${ImGui_SOURCE_DIR}/src/Blendish/blendish.c
 	${ImGui_SOURCE_DIR}/src/ImGui/*.cpp
 	${ImGui_SOURCE_DIR}/src/ImGui/*.c
 	${ImGui_SOURCE_DIR}/src/OCGui/*.cpp

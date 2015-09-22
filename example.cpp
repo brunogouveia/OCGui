@@ -111,7 +111,11 @@ int main(int, char**)
 
             ImGui::SliderFloat("float", &f, 0.0f, 1.0f);
             ImGui::ColorEdit3("clear color", (float*)&clear_color);
+
+            ImGui::SameLine();
             if (ImGui::Button("Test Window")) show_test_window ^= 1;
+            if (ImGui::Button("Test Window2")) show_test_window ^= 1;
+            ImGui::SameLine();
             // if (ImGui::IsItemActive()) {
             //     std::cout << "Item active" << std::endl;
             // }

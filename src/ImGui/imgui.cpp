@@ -3422,6 +3422,18 @@ static ImGuiWindow* CreateNewWindow(const char* name, ImVec2 size, ImGuiWindowFl
     return window;
 }
 
+NVGcontext* gNVCcontext = NULL;
+
+NVGcontext* ImGui::GetNVGcontext()
+{
+    return gNVCcontext;
+}
+
+void ImGui::SetNVGcontext(NVGcontext* context)
+{
+    gNVCcontext = context;
+}
+
 // Push a new ImGui window to add widgets to.
 // - A default window called "Debug" is automatically stacked at the beginning of every frame so you can use widgets without explicitly calling a Begin/End pair.
 // - Begin/End can be called multiple times during the frame with the same window name to append content.
@@ -5238,8 +5250,11 @@ bool ImGui::ButtonEx(const char* label, const ImVec2& size_arg, ImGuiButtonFlags
 
     // Render
     const ImU32 col = window->Color((hovered && held) ? ImGuiCol_ButtonActive : hovered ? ImGuiCol_ButtonHovered : ImGuiCol_Button);
-    RenderFrame(bb.Min, bb.Max, col, true, style.FrameRounding);
-    RenderTextClipped(bb.Min, bb.Max, label, NULL, &label_size, ImGuiAlign_Center | ImGuiAlign_VCenter);
+    // RenderFrame(bb.Min, bb.Max, col, true, style.FrameRounding);
+    // RenderTextClipped(bb.Min, bb.Max, label, NULL, &label_size, ImGuiAlign_Center | ImGuiAlign_VCenter);
+    ImVec2 min = bb.Min;
+    ImVec2 max = bb.Max;
+    bndToolButton(GetNVGcontext(), min.x, min.y,max.x - min.x,max.y - min.y, BND_CORNER_NONE, (hovered && held) ? BND_ACTIVE : hovered ? BND_HOVER : BND_DEFAULT, -1, label);
 
     // Automatically close popups
     //if (pressed && !(flags & ImGuiButtonFlags_DontClosePopups) && (window->Flags & ImGuiWindowFlags_Popup))

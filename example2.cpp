@@ -1,5 +1,6 @@
 #include <OCGui/Window.h>
 #include <OCGui/Text.h>
+#include <OCGui/InputText.h>
 #include <OCGui/Button.h>
 #include <OCGui/OpenGLCanvas.h>
 
@@ -22,10 +23,11 @@ const GLchar* fragmentSource =
     "}";
 
 int main(int argc, char const *argv[]) {
-    OCGui::Window* window = new OCGui::Window("Main Window", 1280, 720);
-    OCGui::Text* text = new OCGui::Text("Text test");
-    OCGui::Button* button = new OCGui::Button("Button test");
+    OCGui::Window*       window = new OCGui::Window("Main Window", 1280, 720);
+    OCGui::Text*         text   = new OCGui::Text("Text test");
+    OCGui::Button*       button = new OCGui::Button("Button testssom");
     OCGui::OpenGLCanvas* canvas = new OCGui::OpenGLCanvas("Janelinha", 400, 200);
+    OCGui::InputText*    input  = new OCGui::InputText("Inputssom");
 
     canvas->SetDrawCallback([&] (ImVec2& min, ImVec2& max)
     {
@@ -121,6 +123,7 @@ int main(int argc, char const *argv[]) {
     window->AddChild(text);
     window->AddChild(button);
     window->AddChild(canvas);
+    window->AddChild(input);
 
     while (!window->IsCloseRequested())
     {
@@ -128,6 +131,12 @@ int main(int argc, char const *argv[]) {
         window->Draw();
         window->SwapBuffers();
     }
+
+    delete input;
+    delete canvas;
+    delete button;
+    delete text;
+    delete window;
 
     return 0;
 }
