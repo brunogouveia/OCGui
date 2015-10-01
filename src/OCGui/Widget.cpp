@@ -1,3 +1,5 @@
+#ifdef OCGUI_IMPLEMENTATION__
+
 #include <OCGui/Widget.h>
 
 namespace OCGui
@@ -12,3 +14,5 @@ namespace OCGui
     }
 
 } /* OCGui */
+
+#endif

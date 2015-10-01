@@ -1,3 +1,5 @@
+#ifdef OCGUI_IMPLEMENTATION__
+
 #include <OCGui/OpenGLCanvas.h>
 
 namespace OCGui
@@ -37,3 +39,5 @@ namespace OCGui
     }
 
 } /* OCGui */
+
+#endif

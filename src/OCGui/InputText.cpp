@@ -1,3 +1,5 @@
+#ifdef OCGUI_IMPLEMENTATION__
+
 #include <OCGui/InputText.h>
 
 namespace OCGui
@@ -508,6 +510,9 @@ namespace OCGui
             {
                 bndTextField(GetNVGcontext(), frame_bb.Min.x, frame_bb.Min.y, xs, ys, 0, BND_ACTIVE, -1, m_buffer, ImMin(edit_state.StbState.select_start, edit_state.StbState.select_end), ImMax(edit_state.StbState.select_start, edit_state.StbState.select_end));
             }
+            else if (m_flags & InputTextFlags_ReadOnly) {
+                bndTextField(GetNVGcontext(), frame_bb.Min.x, frame_bb.Min.y, xs, ys, BND_CORNER_NONE, BND_DEFAULT, -1, m_buffer, 0, -1);
+            }
             else
             {
                 bndTextField(GetNVGcontext(), frame_bb.Min.x, frame_bb.Min.y, xs, ys, 0, BND_ACTIVE, -1, m_buffer, edit_state.StbState.cursor, edit_state.StbState.cursor);
@@ -516,8 +521,8 @@ namespace OCGui
             // Draw blinking cursor
             ImVec2 cursor_screen_pos = render_pos + cursor_offset - render_scroll;
             bool cursor_is_visible = (g.InputTextState.CursorAnim <= 0.0f) || fmodf(g.InputTextState.CursorAnim, 1.20f) <= 0.80f;
-            if (cursor_is_visible)
-                draw_window->DrawList->AddLine(cursor_screen_pos + ImVec2(0.0f,-g.FontSize+0.5f), cursor_screen_pos + ImVec2(0.0f,-1.5f), window->Color(ImGuiCol_Text));
+            // if (cursor_is_visible)
+            //     draw_window->DrawList->AddLine(cursor_screen_pos + ImVec2(0.0f,-g.FontSize+0.5f), cursor_screen_pos + ImVec2(0.0f,-1.5f), window->Color(ImGuiCol_Text));
 
             // Notify OS of text input position for advanced IME
             if (is_editable && io.ImeSetInputScreenPosFn && ImLengthSqr(edit_state.InputCursorScreenPos - cursor_screen_pos) > 0.0001f)
@@ -535,7 +540,7 @@ namespace OCGui
             float xs,ys;
             xs = frame_bb.Max.x - frame_bb.Min.x;
             ys = frame_bb.Max.y - frame_bb.Min.y;
-            bndTextField(GetNVGcontext(), frame_bb.Min.x, frame_bb.Min.y, xs, ys, 0, BND_ACTIVE, -1, m_buffer, 0, -1);
+            bndTextField(GetNVGcontext(), frame_bb.Min.x, frame_bb.Min.y, xs, ys, 0, (m_flags & InputTextFlags_ReadOnly) ? BND_DEFAULT : BND_ACTIVE, -1, m_buffer, 0, -1);
         }
 
         if (is_multiline)
@@ -563,3 +568,5 @@ namespace OCGui
     }
 
 } /* OCGui */
+
+#endif

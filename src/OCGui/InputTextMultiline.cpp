@@ -1,3 +1,5 @@
+#ifdef OCGUI_IMPLEMENTATION__
+
 #include <OCGui/InputTextMultiline.h>
 
 namespace OCGui
@@ -15,3 +17,5 @@ namespace OCGui
     }
 
 } /* OCGui */
+
+#endif

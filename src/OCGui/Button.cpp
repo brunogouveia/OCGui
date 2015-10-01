@@ -1,3 +1,5 @@
+#ifdef OCGUI_IMPLEMENTATION__
+
 #include <OCGui/Button.h>
 #include <iostream>
 
@@ -47,3 +49,5 @@ namespace OCGui {
     }
 
 } /* OCGui */
+
+#endif

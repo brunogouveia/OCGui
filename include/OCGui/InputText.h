@@ -39,6 +39,8 @@ namespace OCGui
 
         virtual void Clear();
 
+        virtual void SetFlags(InputTextFlags flags) { m_flags = flags; }
+
         const char* GetBuffer() const { return m_buffer; }
 
     protected:

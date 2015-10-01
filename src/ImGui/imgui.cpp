@@ -9188,7 +9188,7 @@ void ImGui::ShowMetricsWindow(bool* opened)
 #endif
 
 //-----------------------------------------------------------------------------
-
+#define OCGUI_IMPLEMENTATION__
 #include "../OCGui/Widget.cpp"
 #include "../OCGui/Button.cpp"
 #include "../OCGui/InputText.cpp"
@@ -9196,3 +9196,4 @@ void ImGui::ShowMetricsWindow(bool* opened)
 #include "../OCGui/OpenGLCanvas.cpp"
 #include "../OCGui/Text.cpp"
 #include "../OCGui/Window.cpp"
+#undef OCGUI_IMPLEMENTATION__

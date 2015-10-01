@@ -1,3 +1,5 @@
+#ifdef OCGUI_IMPLEMENTATION__
+
 #include <OCGui/Window.h>
 
 namespace OCGui
@@ -60,6 +62,7 @@ namespace OCGui
         glViewport(0, 0, display_w, display_h);
         glClearColor(114, 114, 154, 1);
         glClear(GL_COLOR_BUFFER_BIT);
+        // bndBackground(ImGui::GetNVGcontext(), 0, 0, m_width, m_height);
 
         for (std::vector<Widget*>::iterator child = m_children.begin(); child != m_children.end(); child++)
         {
@@ -114,3 +117,5 @@ namespace OCGui
     }
 
 }
+
+#endif

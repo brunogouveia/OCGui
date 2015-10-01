@@ -7,6 +7,14 @@ add_definitions(
 	-Wall
 )
 
+# We need a CMAKE_DIR with some code to find external dependencies
+SET(ImGuiExamples_CMAKE_DIR "${ImGuiExamples_SOURCE_DIR}/../cmake")
+
+# OpenGL
+find_package(OpenGL REQUIRED)
+# GLFW3
+INCLUDE(${ImGuiExamples_CMAKE_DIR}/FindGLFW3.cmake)
+
 # Lets LOAD app our sources!
 file(GLOB_RECURSE SRCS1
     ${ImGuiExamples_SOURCE_DIR}/example.cpp
@@ -14,6 +22,7 @@ file(GLOB_RECURSE SRCS1
 	${ImGuiExamples_SOURCE_DIR}/../src/Blendish/blendish.c
 	${ImGuiExamples_SOURCE_DIR}/../src/ImGui/*.cpp
 	${ImGuiExamples_SOURCE_DIR}/../src/ImGui/*.c
+	${ImGuiExamples_SOURCE_DIR}/../src/OCGui/*.cpp
     ${ImGuiExamples_SOURCE_DIR}/../libs/gl3w/GL/*.c
 )
 
@@ -24,19 +33,12 @@ file(GLOB_RECURSE SRCS2
 	${ImGuiExamples_SOURCE_DIR}/../src/Blendish/blendish.c
 	${ImGuiExamples_SOURCE_DIR}/../src/ImGui/*.cpp
 	${ImGuiExamples_SOURCE_DIR}/../src/ImGui/*.c
+	${ImGuiExamples_SOURCE_DIR}/../src/OCGui/*.cpp
     ${ImGuiExamples_SOURCE_DIR}/../libs/gl3w/GL/*.c
 )
 
 # Lets LOAD app our headers!
-file(GLOB_RECURSE HDRS ${ImGuiExamples_SOURCE_DIR}/../include/*.h)
-
-# We need a CMAKE_DIR with some code to find external dependencies
-SET(ImGuiExamples_CMAKE_DIR "${ImGuiExamples_SOURCE_DIR}/../cmake")
-
-# OpenGL
-find_package(OpenGL REQUIRED)
-# GLFW3
-INCLUDE(${ImGuiExamples_CMAKE_DIR}/FindGLFW3.cmake)
+file(GLOB_RECURSE HDRS ${ImGuiExamples_SOURCE_DIR}/../include/*.h ${GLFW3_INCLUDE_DIRS}/GLFW/*.h)
 
 # We are using C++14
 include(CheckCXXCompilerFlag)
@@ -52,7 +54,7 @@ endif()
 
 include_directories(
     ${ImGuiExamples_SOURCE_DIR}/../include
-    ${GLFW3_INCLUDE_DIRS}
+    ${GLFW3_INCLUDE_PATH}
     ${ImGuiExamples_SOURCE_DIR}/../libs/gl3w
 )
 
