@@ -1,7 +1,9 @@
 #ifndef WIDGET_H__
 #define WIDGET_H__
 
+#define IMGUI_DEFINE_MATH_OPERATORS
 #include <ImGui/imgui.h>
+#include <ImGui/imgui_internal.h>
 #include <ImGui/imgui_impl_glfw_gl3.h>
 #include <GL/gl3w.h>
 #include <GLFW/glfw3.h>
@@ -23,6 +25,9 @@ namespace OCGui
         virtual ~Widget() {}
 
         virtual void Draw() = 0;
+
+        virtual void Active();
+
         virtual void OnMouseClick(const MouseEvent& event) { std::cout << "MouseClick on: " << m_label << std::endl; }
         virtual void OnMouseRelease(const MouseEvent& event) { std::cout << "MouseRelease on: " << m_label << std::endl; }
         virtual void OnMouseHover(const MouseEvent& event) { std::cout << "MouseHover on: " << m_label << std::endl; }

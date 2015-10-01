@@ -1,2 +1,0 @@
-/Users/Bruno/Downloads/imgui-marota/build/CMakeFiles/example2.dir
-/Users/Bruno/Downloads/imgui-marota/build/CMakeFiles/example.dir

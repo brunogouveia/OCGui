@@ -1563,7 +1563,7 @@ ImGuiWindow* ImGui::GetParentWindow()
     return g.CurrentWindowStack[g.CurrentWindowStack.Size - 2];
 }
 
-void ImGui::SetActiveID(ImGuiID id, ImGuiWindow* window = NULL)
+void ImGui::SetActiveID(ImGuiID id, ImGuiWindow* window)
 {
     ImGuiState& g = *GImGui;
     g.ActiveId = id;
@@ -3422,6 +3422,18 @@ static ImGuiWindow* CreateNewWindow(const char* name, ImVec2 size, ImGuiWindowFl
     return window;
 }
 
+NVGcontext* gNVCcontext = NULL;
+
+NVGcontext* ImGui::GetNVGcontext()
+{
+    return gNVCcontext;
+}
+
+void ImGui::SetNVGcontext(NVGcontext* context)
+{
+    gNVCcontext = context;
+}
+
 // Push a new ImGui window to add widgets to.
 // - A default window called "Debug" is automatically stacked at the beginning of every frame so you can use widgets without explicitly calling a Begin/End pair.
 // - Begin/End can be called multiple times during the frame with the same window name to append content.
@@ -5096,7 +5108,6 @@ void ImGui::Canvas(const char* label, const ImVec2& size, void (*drawCallback)(c
         return;
 
     // Behavior
-    bool pressed = false;
     const bool hovered = IsHovered(bb, id, true);
     if (hovered)
     {
@@ -5108,15 +5119,6 @@ void ImGui::Canvas(const char* label, const ImVec2& size, void (*drawCallback)(c
                 SetActiveID(id, window);
                 FocusWindow(window);
             }
-            // else if (g.IO.MouseReleased[0] && (flags & ImGuiButtonFlags_PressedOnRelease))
-            // {
-            //     pressed = true;
-            //     SetActiveID(0);
-            // }
-            // else if ((flags & ImGuiButtonFlags_Repeat) && g.ActiveId == id && ImGui::IsMouseClicked(0, true))
-            // {
-            //     pressed = true;
-            // }
         }
     } else if (g.ActiveId == id) {
         if (g.IO.MouseClicked[0])
@@ -5135,14 +5137,11 @@ void ImGui::Canvas(const char* label, const ImVec2& size, void (*drawCallback)(c
         }
     }
 
-    const ImU32 col = window->Color(ImGuiCol_ButtonActive);
     // RenderFrame(bb.Min, bb.Max, col, true, style.FrameRounding);
     ImVec2 *bound = new ImVec2[2];
     bound[0] = bb.Min;
     bound[1] = bb.Max;
     window->DrawList->AddCallback(drawCallback,bound);
-    // drawCallback(bb.Min, bb.Max);
-
 }
 
 bool ImGui::ButtonBehavior(const ImRect& bb, ImGuiID id, bool* out_hovered, bool* out_held, bool allow_key_modifiers, ImGuiButtonFlags flags)
@@ -7098,6 +7097,8 @@ static bool InputTextFilterCharacter(unsigned int* p_char, ImGuiInputTextFlags f
 
     return true;
 }
+
+#include <iostream>
 
 // Edit a string of text
 bool ImGui::InputTextEx(const char* label, char* buf, int buf_size, const ImVec2& size_arg, ImGuiInputTextFlags flags, ImGuiTextEditCallback callback, void* user_data)
@@ -9187,3 +9188,11 @@ void ImGui::ShowMetricsWindow(bool* opened)
 #endif
 
 //-----------------------------------------------------------------------------
+
+#include "../OCGui/Widget.cpp"
+#include "../OCGui/Button.cpp"
+#include "../OCGui/InputText.cpp"
+#include "../OCGui/InputTextMultiline.cpp"
+#include "../OCGui/OpenGLCanvas.cpp"
+#include "../OCGui/Text.cpp"
+#include "../OCGui/Window.cpp"

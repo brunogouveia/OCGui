@@ -37,6 +37,11 @@ namespace OCGui
         // io.Fonts->AddFontFromFileTTF("../extra_fonts/Cousine-Regular.ttf", 15.0f);
         io.Fonts->AddFontFromFileTTF("../extra_fonts/DroidSans.ttf", 16.0f);
 
+        // Initialize NVG context
+        ImGui::SetNVGcontext(nvgCreateGL3(NVG_ANTIALIAS));
+        bndSetFont(nvgCreateFont(ImGui::GetNVGcontext(), "system", "../DejaVuSans.ttf"));
+        bndSetIconImage(nvgCreateImage(ImGui::GetNVGcontext(), "../blender_icons16.png", 0));
+
     }
 
     Window::~Window() {
@@ -45,6 +50,7 @@ namespace OCGui
 
     void Window::Draw()
     {
+        nvgBeginFrame(ImGui::GetNVGcontext(), m_width, m_height, 2);
         ImGui_ImplGlfwGL3_NewFrame();
         ImGui::SetWindowPos(ImVec2(0,0));
         ImGui::SetWindowSize(ImVec2(m_width, m_height));
@@ -88,6 +94,8 @@ namespace OCGui
         }
 
         ImGui::Render();
+
+        nvgEndFrame(ImGui::GetNVGcontext());
 
     }
 

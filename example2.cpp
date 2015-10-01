@@ -1,5 +1,7 @@
 #include <OCGui/Window.h>
 #include <OCGui/Text.h>
+#include <OCGui/InputText.h>
+#include <OCGui/InputTextMultiline.h>
 #include <OCGui/Button.h>
 #include <OCGui/OpenGLCanvas.h>
 
@@ -22,17 +24,23 @@ const GLchar* fragmentSource =
     "}";
 
 int main(int argc, char const *argv[]) {
-    OCGui::Window* window = new OCGui::Window("Main Window", 1280, 720);
-    OCGui::Text* text = new OCGui::Text("Text test");
-    OCGui::Button* button = new OCGui::Button("Button test");
-    OCGui::OpenGLCanvas* canvas = new OCGui::OpenGLCanvas("Janelinha", 400, 200);
+    OCGui::Window*             window = new OCGui::Window("Main Window", 1280, 720);
+    OCGui::Text*               text   = new OCGui::Text("Text test");
+    OCGui::Button*             button = new OCGui::Button("Button testssom");
+    OCGui::OpenGLCanvas*       canvas = new OCGui::OpenGLCanvas("Janelinha", 400, 200);
+    OCGui::InputTextMultiline* input  = new OCGui::InputTextMultiline("Inputssom", OCGui::InputTextFlags_None, [&] {
+        std::cout << "Input content: " << std::string(input->GetBuffer()) << std::endl;
+        input->Clear();
+        input->Active();
+    });
+    OCGui::InputText*          input2 = new OCGui::InputText("Inputssom2");
 
     canvas->SetDrawCallback([&] (ImVec2& min, ImVec2& max)
     {
         glEnable(GL_SCISSOR_TEST);
         OCGui::Vec2 winSize = window->GetWindowSize();
         OCGui::Vec2 fbSize = window->GetFramebufferSize();
-        int winWidth = winSize.x, winHeight = winSize.y;
+        // int winWidth = winSize.x, winHeight = winSize.y;
     	int fbWidth = fbSize.x, fbHeight = fbSize.y;
     	float pxRatio = fbSize.y / winSize.y;
 
@@ -40,7 +48,7 @@ int main(int argc, char const *argv[]) {
         min.y *= pxRatio;
         max.x *= pxRatio;
         max.y *= pxRatio;
-
+        //
         glScissor(min.x, fbHeight - max.y, max.x - min.x, max.y - min.y);
         glClearColor(0,0,0,1);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -115,12 +123,16 @@ int main(int argc, char const *argv[]) {
         // Draw a rectangle from the 2 triangles using 6 indices
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
+        glBindVertexArray(0);
         glViewport(0,0,fbWidth,fbHeight);
     });
 
     window->AddChild(text);
-    window->AddChild(button);
+
     window->AddChild(canvas);
+    window->AddChild(button);
+    window->AddChild(input);
+    window->AddChild(input2);
 
     while (!window->IsCloseRequested())
     {
@@ -128,6 +140,12 @@ int main(int argc, char const *argv[]) {
         window->Draw();
         window->SwapBuffers();
     }
+
+    delete input;
+    delete canvas;
+    delete button;
+    delete text;
+    delete window;
 
     return 0;
 }

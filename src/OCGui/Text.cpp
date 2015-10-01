@@ -13,7 +13,7 @@ namespace OCGui
 
     void Text::Draw()
     {
-        ImGui::Text(m_label.c_str());
+        ImGui::Text("%s", m_label.c_str());
     }
 
 }

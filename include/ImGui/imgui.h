@@ -18,6 +18,11 @@
 #include <string.h>         // memset, memmove, memcpy, strlen, strchr, strcpy, strcmp
 #include <functional>       // std::function
 
+#include <Blendish/nanovg.h>
+#include <Blendish/nanovg_gl.h>
+
+#include <Blendish/blendish.h>
+
 #define IMGUI_VERSION       "1.46 WIP"
 
 // Define assertion handler.
@@ -114,6 +119,10 @@ namespace ImGui
     IMGUI_API void          ShowStyleEditor(ImGuiStyle* ref = NULL);    // style editor block
     IMGUI_API void          ShowTestWindow(bool* opened = NULL);        // test window, demonstrate ImGui features
     IMGUI_API void          ShowMetricsWindow(bool* opened = NULL);     // metrics window for debugging imgui
+
+    // NanoVG
+    IMGUI_API NVGcontext*   GetNVGcontext();
+    IMGUI_API void          SetNVGcontext(NVGcontext* context);
 
     // Window
     IMGUI_API bool          Begin(const char* name, bool* p_opened = NULL, ImGuiWindowFlags flags = 0);                                           // see .cpp for details. return false when window is collapsed, so you can early out in your code. 'bool* p_opened' creates a widget on the upper-right to close the window (which sets your bool to false).
