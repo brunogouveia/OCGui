@@ -2,10 +2,11 @@
 #define WINDOW_H__
 
 #include <OCGui/Widget.h>
+#include <OCGui/Layoutable.h>
 
 namespace OCGui
 {
-    class Window: public Widget
+    class Window: public Widget, public Layoutable
     {
     public:
         Window(std::string&& label, int width, int height);
@@ -17,9 +18,6 @@ namespace OCGui
 
         Vec2 GetFramebufferSize();
         Vec2 GetWindowSize();
-        
-        inline Widget* GetContent()                { return m_content; }
-        inline void    SetContent(Widget* content) {m_content = content; }
 
         inline void HandlGLFWEvents()  { glfwPollEvents(); }
         inline bool IsCloseRequested() { return glfwWindowShouldClose(m_window); }
@@ -29,7 +27,6 @@ namespace OCGui
         GLFWwindow* m_window;
         int         m_width;
         int         m_height;
-        Widget*     m_content;
         Widget*     m_childBeingDragged;
     };
 }

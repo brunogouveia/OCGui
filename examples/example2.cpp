@@ -32,7 +32,10 @@ int main(int argc, char const *argv[]) {
 //    OCGui::Text*               text   = new OCGui::Text("Text test");
     OCGui::Button*             button = new OCGui::Button("Button testssom");
     OCGui::Button*            button2 = new OCGui::Button("Button testssom2");
+    OCGui::Button*            button3 = new OCGui::Button("Button testssom3");
     OCGui::OpenGLCanvas*       canvas = new OCGui::OpenGLCanvas("Janelinha", 400, 200);
+    OCGui::VBox*          vboxcanvas  = new OCGui::VBox("Canvas layout", canvas);
+    canvas->SetContent(vboxcanvas);
 //    OCGui::InputText*          input2 = new OCGui::InputText("Inputssom2", OCGui::InputTextFlags_ReadOnly);
 //    OCGui::InputTextMultiline* input  = new OCGui::InputTextMultiline("Inputssom", OCGui::InputTextFlags_KeepActiveOnEnter, [&] {
 ////        static bool f = true;
@@ -148,12 +151,14 @@ int main(int argc, char const *argv[]) {
     vbox2->AddWidget(button2);
     vbox2->AddWidget(canvas);
     
+    vboxcanvas->AddWidget(button3);
+    
     button->SetRelativeSize(OCGui::Vec2(100,50));
     vbox2->SetRelativeSize (OCGui::Vec2(100, 50));
 
     button2->SetRelativeSize(OCGui::Vec2(100, 50));
     canvas->SetRelativeSize (OCGui::Vec2(100, 50));
-
+    
     while (!window->IsCloseRequested())
     {
         window->HandlGLFWEvents();

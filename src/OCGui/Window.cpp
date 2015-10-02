@@ -77,7 +77,8 @@ namespace OCGui
         // Begin nvg frame
         nvgBeginFrame(ImGui::GetNVGcontext(), m_width, m_height, 2);
 
-        if (m_content) {
+        if (m_content)
+        {
             m_content->HandleEvents(Vec2(0,0), ImVec2(m_width, m_height));
             m_content->Draw(Vec2(0,0), ImVec2(m_width, m_height));
         }

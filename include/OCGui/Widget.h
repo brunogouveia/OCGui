@@ -21,7 +21,12 @@ namespace OCGui
     class Widget
     {
     public:
-        Widget(std::string&& label) : m_label(label) {}
+        Widget(std::string&& label):
+            m_label(label),
+            m_position(0,0),
+            m_size(0,0),
+            m_relativeSize(0,0)
+        {}
         virtual ~Widget() {}
 
         virtual void Draw(Vec2&& position, Vec2&& size) = 0;

@@ -2,12 +2,13 @@
 #define OPENGL_CANVAS_H__
 
 #include <OCGui/Widget.h>
+#include <OCGui/Layoutable.h>
 #include <functional>
 
 namespace OCGui
 {
 
-    class OpenGLCanvas: public Widget
+    class OpenGLCanvas: public Widget, public Layoutable
     {
     public:
         OpenGLCanvas (std::string&& label, int width, int height);

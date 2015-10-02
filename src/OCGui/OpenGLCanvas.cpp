@@ -17,63 +17,24 @@ namespace OCGui
 
     void OpenGLCanvas::Draw(Vec2&& position, Vec2&& size)
     {
-//        using namespace ImGui;
-//        ImGuiWindow* window = GetCurrentWindow();
-//        if (window->SkipItems)
-//            return;
-//        
-//        ImGuiState& g = *GImGui;
-//        const ImGuiStyle& style = g.Style;
-//        const ImGuiID id = window->GetID(m_label.c_str());
-//        
-//        ImVec2 pos = window->DC.CursorPos;
-//        
-//        const ImRect bb(pos, pos + ImVec2(m_width, m_height));
-//        ItemSize(bb, style.FramePadding.y);
-//        if (!ItemAdd(bb, &id))
-//            return;
-//        
-//        // Behavior
-//        const bool hovered = IsHovered(bb, id, true);
-//        if (hovered)
-//        {
-//            g.HoveredId = id;
-//            if ((!g.IO.KeyCtrl && !g.IO.KeyShift && !g.IO.KeyAlt))
-//            {
-//                if (g.IO.MouseClicked[0])
-//                {
-//                    SetActiveID(id, window);
-//                    FocusWindow(window);
-//                }
-//            }
-//        } else if (g.ActiveId == id) {
-//            if (g.IO.MouseClicked[0])
-//            {
-//                SetActiveID(0);
-//            }
-//        }
-//        
-//        bool held = false;
-//        if (g.ActiveId == id)
-//        {
-//            g.ActiveIdIsFocusedOnly = !g.IO.MouseDown[0];
-//            if (g.IO.MouseDown[0])
-//            {
-//                held = true;
-//            }
-//        }
-//        
-//        // RenderFrame(bb.Min, bb.Max, col, true, style.FrameRounding);
-//        const ImRect bb(m_position, m_position + ImVec2(m_width, m_height));
-//        Vec2 min = bb.Min;
-//        Vec2 max = bb.Max;
-        //window->DrawList->AddCallback(drawCallback,bound);
-        GetDrawCallback()(std::move(m_position), m_position + m_size);
+        if (m_content) {
+            m_content->Draw(std::move(position), std::move(size));
+        }
+        
+        if (GetDrawCallback())
+        {
+            GetDrawCallback()(std::move(m_position), m_position + m_size);
+        }
 
     }
     
     bool OpenGLCanvas::HandleEvents(Vec2&& position, Vec2&& size)
     {
+        if (m_content && m_content->HandleEvents(std::move(position), std::move(size)))
+        {
+            return true;
+        }
+        
         using namespace ImGui;
         ImGuiWindow* window = GetCurrentWindow();
         if (window->SkipItems)
@@ -118,6 +79,10 @@ namespace OCGui
             {
                 held = true;
             }
+        }
+        
+        if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0)) {
+            std::cout << "Canvas clicked" << std::endl;
         }
         
         // Update position and size
