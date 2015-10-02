@@ -15,7 +15,7 @@ namespace OCGui
 
     OpenGLCanvas::~OpenGLCanvas() {}
 
-    void OpenGLCanvas::Draw()
+    void OpenGLCanvas::Draw(Vec2&& position, Vec2&& size)
     {
         using namespace ImGui;
         ImGuiWindow* window = GetCurrentWindow();
@@ -69,6 +69,11 @@ namespace OCGui
         //window->DrawList->AddCallback(drawCallback,bound);
         GetDrawCallback()(min, max);
 
+    }
+    
+    bool OpenGLCanvas::HandleEvents(Vec2&& position, Vec2&& size)
+    {
+        return false;
     }
 
 } /* OCGui */

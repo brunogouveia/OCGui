@@ -12,7 +12,8 @@ namespace OCGui
         Text (std::string&& label);
         virtual ~Text ();
 
-        virtual void Draw();
+        virtual void Draw(Vec2&& position, Vec2&& size);
+        virtual bool HandleEvents(Vec2&& position, Vec2&& size);
 
     };
 

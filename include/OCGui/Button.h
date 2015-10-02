@@ -12,7 +12,13 @@ namespace OCGui
         Button (std::string&& label);
         virtual ~Button ();
 
-        void Draw();
+        virtual void Draw(Vec2&& position, Vec2&& size);
+        virtual bool HandleEvents(Vec2&& position, Vec2&& size);
+        
+    protected:
+        bool m_pressed;
+        bool m_hovered;
+        bool m_held;
 
     };
 

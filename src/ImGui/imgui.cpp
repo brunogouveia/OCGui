@@ -9196,4 +9196,5 @@ void ImGui::ShowMetricsWindow(bool* opened)
 #include "../OCGui/OpenGLCanvas.cpp"
 #include "../OCGui/Text.cpp"
 #include "../OCGui/Window.cpp"
+#include "../OCGui/VBox.cpp"
 #undef OCGUI_IMPLEMENTATION__

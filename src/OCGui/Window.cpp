@@ -43,14 +43,22 @@ namespace OCGui
         ImGui::SetNVGcontext(nvgCreateGL3(NVG_ANTIALIAS));
         bndSetFont(nvgCreateFont(ImGui::GetNVGcontext(), "system", "../DejaVuSans.ttf"));
         bndSetIconImage(nvgCreateImage(ImGui::GetNVGcontext(), "../blender_icons16.png", 0));
+        
+        m_position = Vec2(0,0);
+        m_size     = Vec2(width, height);
 
     }
 
     Window::~Window() {
 
     }
+    
+    void Window::Render()
+    {
+        Draw(Vec2(0,0), Vec2(0,0));
+    }
 
-    void Window::Draw()
+    void Window::Draw(Vec2&& position, Vec2&& size)
     {
         // Clear background
         nvgBeginFrame(ImGui::GetNVGcontext(), m_width, m_height, 2);
@@ -69,42 +77,51 @@ namespace OCGui
         // Begin nvg frame
         nvgBeginFrame(ImGui::GetNVGcontext(), m_width, m_height, 2);
 
-        for (std::vector<Widget*>::iterator child = m_children.begin(); child != m_children.end(); child++)
-        {
-            (*child)->Draw();
-
-            if (ImGui::IsItemHovered()) {
-                if (ImGui::IsMouseClicked(0)) {
-                    (*child)->OnMouseClick(MouseEvent());
-                }
-                else if (ImGui::IsMouseDown(0)) {
-                    (*child)->OnMouseDown(MouseEvent());
-                }
-                else if (ImGui::IsMouseReleased(0))
-                {
-                    (*child)->OnMouseRelease(MouseEvent());
-                }
-
-                // Check for drop event
-                if(m_childBeingDragged)
-                {
-                    if (m_childBeingDragged != (*child))
-                        (*child)->OnDrop(DropEvent(m_childBeingDragged));
-                    m_childBeingDragged = NULL;
-                }
-
-            }
-
-            if (ImGui::IsItemActive() && ImGui::IsMouseDragging()) {
-                (*child)->OnDrag(DragEvent(ImGui::GetMouseDragDelta()));
-                m_childBeingDragged = (*child);
-            }
+        if (m_content) {
+            m_content->HandleEvents(Vec2(0,0), ImVec2(m_width, m_height));
+            m_content->Draw(Vec2(0,0), ImVec2(m_width, m_height));
         }
+//        for (std::vector<Widget*>::iterator child = m_children.begin(); child != m_children.end(); child++)
+//        {
+//            (*child)->Draw();
+//
+//            if (ImGui::IsItemHovered()) {
+//                if (ImGui::IsMouseClicked(0)) {
+//                    (*child)->OnMouseClick(MouseEvent());
+//                }
+//                else if (ImGui::IsMouseDown(0)) {
+//                    (*child)->OnMouseDown(MouseEvent());
+//                }
+//                else if (ImGui::IsMouseReleased(0))
+//                {
+//                    (*child)->OnMouseRelease(MouseEvent());
+//                }
+//
+//                // Check for drop event
+//                if(m_childBeingDragged)
+//                {
+//                    if (m_childBeingDragged != (*child))
+//                        (*child)->OnDrop(DropEvent(m_childBeingDragged));
+//                    m_childBeingDragged = NULL;
+//                }
+//
+//            }
+//
+//            if (ImGui::IsItemActive() && ImGui::IsMouseDragging()) {
+//                (*child)->OnDrag(DragEvent(ImGui::GetMouseDragDelta()));
+//                m_childBeingDragged = (*child);
+//            }
+//        }
 
         ImGui::Render();
 
         nvgEndFrame(ImGui::GetNVGcontext());
 
+    }
+    
+    bool Window::HandleEvents(Vec2&& position, Vec2&& size)
+    {
+        return false;
     }
 
     Vec2 Window::GetFramebufferSize()

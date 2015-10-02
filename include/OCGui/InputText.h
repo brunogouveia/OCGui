@@ -36,9 +36,10 @@ namespace OCGui
         InputText (std::string&& label, InputTextFlags flags = InputTextFlags_None, std::function<void(void)> enterCallback = [](){}, uint bufferSize = 512);
         virtual ~InputText ();
 
-        virtual void Draw();
+        virtual void Draw(Vec2&& position, Vec2&& size);
+        virtual bool HandleEvents(Vec2&& position, Vec2&& size);
+        
         virtual void ClearText();
-
         virtual void SetText(std::string&& text);
         virtual void SetFlags(InputTextFlags flags) { m_flags = flags; }
         const char* GetBuffer() const { return m_buffer; }

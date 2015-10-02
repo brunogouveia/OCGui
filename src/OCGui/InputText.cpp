@@ -26,7 +26,7 @@ namespace OCGui
             delete m_buffer;
     }
 
-    void InputText::Draw()
+    void InputText::Draw(Vec2&& position, Vec2&& size2)
     {
         using namespace ImGui;
 
@@ -557,6 +557,11 @@ namespace OCGui
         {
             m_enterCallback();
         }
+    }
+    
+    bool InputText::HandleEvents(Vec2&& position, Vec2&& size)
+    {
+        return false;
     }
 
     void InputText::SetText(std::string&& text)

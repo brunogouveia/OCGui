@@ -13,7 +13,9 @@ namespace OCGui
         OpenGLCanvas (std::string&& label, int width, int height);
         virtual ~OpenGLCanvas ();
 
-        void Draw();
+        virtual void Draw(Vec2&& position, Vec2&& size);
+        virtual bool HandleEvents(Vec2&& position, Vec2&& size);
+        
         inline void SetDrawCallback(std::function<void(ImVec2& min, ImVec2& max)> drawCallback) { m_drawCallback = drawCallback; }
         inline std::function<void(ImVec2& min, ImVec2& max)> GetDrawCallback() { return m_drawCallback; }
 

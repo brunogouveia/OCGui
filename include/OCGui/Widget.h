@@ -24,9 +24,8 @@ namespace OCGui
         Widget(std::string&& label) : m_label(label) {}
         virtual ~Widget() {}
 
-        virtual void Draw() = 0;
-
-        virtual void Active();
+        virtual void Draw(Vec2&& position, Vec2&& size) = 0;
+        virtual bool HandleEvents(Vec2&& position, Vec2&& size) = 0;
 
         virtual void OnMouseClick(const MouseEvent& event) { std::cout << "MouseClick on: " << m_label << std::endl; }
         virtual void OnMouseRelease(const MouseEvent& event) { std::cout << "MouseRelease on: " << m_label << std::endl; }
@@ -35,12 +34,17 @@ namespace OCGui
         virtual void OnMouseUp(const MouseEvent& event) { std::cout << "MouseUp on: " << m_label << std::endl; }
         virtual void OnDrag(const DragEvent& event) { std::cout << "OnDrag on: " << m_label << std::endl; std::cout << ImGui::GetMouseDragDelta().x << " " << ImGui::GetMouseDragDelta().x << std::endl; }
         virtual void OnDrop(const DropEvent& event) { std::cout << "OnDrop on: " << m_label << " dropped: " << event.widgetDropped->m_label << std::endl; }
-
-        inline void AddChild(Widget* child) { m_children.push_back(child); }
+        
+        void SetRelativeSize(Vec2&& relativeSize) { m_relativeSize = relativeSize; }
+        Vec2 GetRelativeSize() const { return m_relativeSize; }
+        Vec2 GetPosition()     const { return m_position; }
+        Vec2 GetSize()         const { return m_size; }
 
     protected:
-        std::string          m_label;
-        std::vector<Widget*> m_children;
+        std::string m_label;
+        Vec2        m_position;
+        Vec2        m_size;
+        Vec2        m_relativeSize;
     };
 }
 
