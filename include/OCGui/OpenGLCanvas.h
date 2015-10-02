@@ -16,11 +16,11 @@ namespace OCGui
         virtual void Draw(Vec2&& position, Vec2&& size);
         virtual bool HandleEvents(Vec2&& position, Vec2&& size);
         
-        inline void SetDrawCallback(std::function<void(ImVec2& min, ImVec2& max)> drawCallback) { m_drawCallback = drawCallback; }
-        inline std::function<void(ImVec2& min, ImVec2& max)> GetDrawCallback() { return m_drawCallback; }
+        inline void SetDrawCallback(std::function<void(ImVec2&& min, ImVec2&& max)> drawCallback) { m_drawCallback = drawCallback; }
+        inline std::function<void(ImVec2&& min, ImVec2&& max)> GetDrawCallback() { return m_drawCallback; }
 
     protected:
-        std::function<void(ImVec2& min, ImVec2& max)> m_drawCallback;
+        std::function<void(ImVec2&& min, ImVec2&& max)> m_drawCallback;
 
         int m_width;
         int m_height;
