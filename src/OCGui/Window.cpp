@@ -52,7 +52,12 @@ namespace OCGui
 
     void Window::Draw()
     {
+        // Clear background
         nvgBeginFrame(ImGui::GetNVGcontext(), m_width, m_height, 2);
+        bndBackground(ImGui::GetNVGcontext(), 0, 0, m_width, m_height);
+        nvgEndFrame(ImGui::GetNVGcontext());
+        
+        // Create new ImGui frame
         ImGui_ImplGlfwGL3_NewFrame();
         ImGui::SetWindowPos(ImVec2(0,0));
         ImGui::SetWindowSize(ImVec2(m_width, m_height));
@@ -60,9 +65,9 @@ namespace OCGui
         int display_w, display_h;
         glfwGetFramebufferSize(m_window, &display_w, &display_h);
         glViewport(0, 0, display_w, display_h);
-        glClearColor(114, 114, 154, 1);
-        glClear(GL_COLOR_BUFFER_BIT);
-        // bndBackground(ImGui::GetNVGcontext(), 0, 0, m_width, m_height);
+        
+        // Begin nvg frame
+        nvgBeginFrame(ImGui::GetNVGcontext(), m_width, m_height, 2);
 
         for (std::vector<Widget*>::iterator child = m_children.begin(); child != m_children.end(); child++)
         {

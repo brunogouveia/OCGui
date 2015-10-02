@@ -25,6 +25,7 @@ namespace OCGui
         InputTextFlags_NoHorizontalScroll  = 1 << 12,  // Disable following the cursor horizontally
         InputTextFlags_AlwaysInsertMode    = 1 << 13,  // Insert mode
         InputTextFlags_ReadOnly            = 1 << 14,  // Read-only mode
+        InputTextFlags_KeepActiveOnEnter   = 1 << 15,  // When enter is pressed, the widget will be still active
         // [Internal]
         InputTextFlags_Multiline           = 1 << 20   // For internal use by InputTextMultiline()
     } InputTextFlags;
@@ -36,11 +37,10 @@ namespace OCGui
         virtual ~InputText ();
 
         virtual void Draw();
+        virtual void ClearText();
 
-        virtual void Clear();
-
+        virtual void SetText(std::string&& text);
         virtual void SetFlags(InputTextFlags flags) { m_flags = flags; }
-
         const char* GetBuffer() const { return m_buffer; }
 
     protected:

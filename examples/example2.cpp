@@ -28,19 +28,20 @@ int main(int argc, char const *argv[]) {
     OCGui::Text*               text   = new OCGui::Text("Text test");
     OCGui::Button*             button = new OCGui::Button("Button testssom");
     OCGui::OpenGLCanvas*       canvas = new OCGui::OpenGLCanvas("Janelinha", 400, 200);
-    OCGui::InputText*          input2 = new OCGui::InputText("Inputssom2");
-    OCGui::InputTextMultiline* input  = new OCGui::InputTextMultiline("Inputssom", OCGui::InputTextFlags_None, [&] {
-        static bool f = true;
+    OCGui::InputText*          input2 = new OCGui::InputText("Inputssom2", OCGui::InputTextFlags_ReadOnly);
+    OCGui::InputTextMultiline* input  = new OCGui::InputTextMultiline("Inputssom", OCGui::InputTextFlags_KeepActiveOnEnter, [&] {
+//        static bool f = true;
         std::cout << "Input content: " << std::string(input->GetBuffer()) << std::endl;
-        input->Clear();
-        input->Active();
+        input2->SetText(std::string(input->GetBuffer()));
+        input->ClearText();
         
-        if (f) {
-            input2->SetFlags(OCGui::InputTextFlags_ReadOnly);
-        } else {
-            input2->SetFlags(OCGui::InputTextFlags_None);
-        }
-        f = !f;
+        
+//        if (f) {
+//            input2->SetFlags(OCGui::InputTextFlags_ReadOnly);
+//        } else {
+//            input2->SetFlags(OCGui::InputTextFlags_None);
+//        }
+//        f = !f;
 
     });
 

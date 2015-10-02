@@ -107,10 +107,9 @@ namespace OCGui
         }
         else
         {
-            ImGuiButtonFlags flags = 0;
             ImVec2 size_arg = ImVec2(0,0);
 
-            const float wrap_width = wrap_enabled ? CalcWrapWidthForPos(window->DC.CursorPos, wrap_pos_x) : 0.0f;
+//            const float wrap_width = wrap_enabled ? CalcWrapWidthForPos(window->DC.CursorPos, wrap_pos_x) : 0.0f;
             const ImVec2 label_size = ImGui::CalcTextSize(m_label.c_str(), NULL, true);
 
             ImVec2 pos = window->DC.CursorPos;
@@ -124,8 +123,8 @@ namespace OCGui
                 return;
 
             // Render (we don't hide text after ## in this end-user function)
-            int width = bndLabelWidth(GetNVGcontext(), BND_ICON_NONE, text_begin);
-            int height = bndLabelHeight(GetNVGcontext(), BND_ICON_NONE, text_begin, width);
+//            int width = bndLabelWidth(GetNVGcontext(), BND_ICON_NONE, text_begin);
+//            int height = bndLabelHeight(GetNVGcontext(), BND_ICON_NONE, text_begin, width);
 
             ImVec2 sizes = bb.Max - bb.Min;
             // std::cout << "Width : " << width << " - " << bb.Max.x - bb.Min.x << std::endl;

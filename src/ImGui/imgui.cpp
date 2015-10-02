@@ -2345,21 +2345,21 @@ void ImGui::Render()
         g.IO.MetricsRenderVertices = g.IO.MetricsRenderIndices = g.IO.MetricsActiveWindows = 0;
         for (int i = 0; i < IM_ARRAYSIZE(g.RenderDrawLists); i++)
             g.RenderDrawLists[i].resize(0);
-        for (int i = 0; i != g.Windows.Size; i++)
-        {
-            ImGuiWindow* window = g.Windows[i];
-            if (window->Active && window->HiddenFrames <= 0 && (window->Flags & (ImGuiWindowFlags_ChildWindow)) == 0)
-            {
-                // FIXME: Generalize this with a proper layering system so e.g. user can draw in specific layers, below text, ..
-                g.IO.MetricsActiveWindows++;
-                if (window->Flags & ImGuiWindowFlags_Popup)
-                    AddWindowToRenderList(g.RenderDrawLists[1], window);
-                else if (window->Flags & ImGuiWindowFlags_Tooltip)
-                    AddWindowToRenderList(g.RenderDrawLists[2], window);
-                else
-                    AddWindowToRenderList(g.RenderDrawLists[0], window);
-            }
-        }
+//        for (int i = 0; i != g.Windows.Size; i++)
+//        {
+//            ImGuiWindow* window = g.Windows[i];
+//            if (window->Active && window->HiddenFrames <= 0 && (window->Flags & (ImGuiWindowFlags_ChildWindow)) == 0)
+//            {
+//                // FIXME: Generalize this with a proper layering system so e.g. user can draw in specific layers, below text, ..
+//                g.IO.MetricsActiveWindows++;
+//                if (window->Flags & ImGuiWindowFlags_Popup)
+//                    AddWindowToRenderList(g.RenderDrawLists[1], window);
+//                else if (window->Flags & ImGuiWindowFlags_Tooltip)
+//                    AddWindowToRenderList(g.RenderDrawLists[2], window);
+//                else
+//                    AddWindowToRenderList(g.RenderDrawLists[0], window);
+//            }
+//        }
 
         // Flatten layers
         int n = g.RenderDrawLists[0].Size;

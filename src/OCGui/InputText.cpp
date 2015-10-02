@@ -213,7 +213,10 @@ namespace OCGui
                 bool ctrl_enter_for_new_line = (m_flags & ImGuiInputTextFlags_CtrlEnterForNewLine) != 0;
                 if (!is_multiline || (ctrl_enter_for_new_line && !is_ctrl_down) || (!ctrl_enter_for_new_line && is_ctrl_down))
                 {
-                    SetActiveID(0);
+                    if (!(m_flags & InputTextFlags_KeepActiveOnEnter))
+                    {
+                        SetActiveID(0);
+                    }
                     enter_pressed = true;
                 }
                 else if (is_editable) // New line
@@ -520,7 +523,7 @@ namespace OCGui
 
             // Draw blinking cursor
             ImVec2 cursor_screen_pos = render_pos + cursor_offset - render_scroll;
-            bool cursor_is_visible = (g.InputTextState.CursorAnim <= 0.0f) || fmodf(g.InputTextState.CursorAnim, 1.20f) <= 0.80f;
+//            bool cursor_is_visible = (g.InputTextState.CursorAnim <= 0.0f) || fmodf(g.InputTextState.CursorAnim, 1.20f) <= 0.80f;
             // if (cursor_is_visible)
             //     draw_window->DrawList->AddLine(cursor_screen_pos + ImVec2(0.0f,-g.FontSize+0.5f), cursor_screen_pos + ImVec2(0.0f,-1.5f), window->Color(ImGuiCol_Text));
 
@@ -556,15 +559,34 @@ namespace OCGui
         }
     }
 
-    void InputText::Clear()
+    void InputText::SetText(std::string&& text)
     {
-        // Reset editState
+        ImGuiWindow* window = ImGui::GetCurrentWindow();
         ImGuiState& g = *((ImGuiState*)ImGui::GetInternalState());
+        
+        const ImGuiID id = window->GetID(m_label.c_str());
+        
+        if (g.ActiveId == id)
+        {
+            // NB: we are only allowed to access 'edit_state' if we are the active widget.
+            ImGuiTextEditState& editState = g.InputTextState;
+            editState.SelectAll();
+            editState.OnKeyPressed(STB_TEXTEDIT_K_BACKSPACE);
+            
+            for (char c: text)
+            {
+                editState.OnKeyPressed((int)c);
+            }
+            
+        }
+        
+        // Clear buffer
+        strcpy(m_buffer, text.c_str());
+    }
 
-        // NB: we are only allowed to access 'edit_state' if we are the active widget.
-        ImGuiTextEditState& editState = g.InputTextState;
-        editState.SelectAll();
-        editState.OnKeyPressed(STB_TEXTEDIT_K_BACKSPACE);
+    void InputText::ClearText()
+    {
+        SetText("");
     }
 
 } /* OCGui */
