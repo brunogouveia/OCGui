@@ -25,7 +25,6 @@ namespace OCGui
         {
             GetDrawCallback()(std::move(m_position), m_position + m_size);
         }
-
     }
     
     bool OpenGLCanvas::HandleEvents(Vec2&& position, Vec2&& size)
@@ -89,7 +88,7 @@ namespace OCGui
         m_position = position;
         m_size     = actualSize;
 
-        return true;
+        return false;
     }
 
 } /* OCGui */

@@ -44,6 +44,7 @@ namespace OCGui
         Vec2 GetRelativeSize() const { return m_relativeSize; }
         Vec2 GetPosition()     const { return m_position; }
         Vec2 GetSize()         const { return m_size; }
+        const std::string GetLabel() const { return m_label; }
 
     protected:
         std::string m_label;

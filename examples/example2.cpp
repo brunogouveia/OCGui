@@ -53,7 +53,7 @@ int main(int argc, char const *argv[]) {
 //
 //    });
 
-    canvas->SetDrawCallback([&] (ImVec2&& min, ImVec2&& max)
+    canvas->SetDrawCallback([&] (ImVec2 min, ImVec2 max)
     {
         glEnable(GL_SCISSOR_TEST);
         OCGui::Vec2 winSize = window->GetWindowSize();
@@ -159,6 +159,8 @@ int main(int argc, char const *argv[]) {
     button2->SetRelativeSize(OCGui::Vec2(100, 50));
     canvas->SetRelativeSize (OCGui::Vec2(100, 50));
     
+    button3->SetRelativeSize(OCGui::Vec2(100,0));
+
     while (!window->IsCloseRequested())
     {
         window->HandlGLFWEvents();

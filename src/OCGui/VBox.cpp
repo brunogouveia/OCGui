@@ -26,6 +26,7 @@ namespace OCGui
         {
             Vec2 childSize = initialSize * (child->GetRelativeSize() / 100.0f);
             child->Draw(std::move(initialPosition), std::move(childSize));
+
             initialPosition.y += child->GetSize().y;
         }
     }
@@ -39,7 +40,10 @@ namespace OCGui
         {
             Vec2 childSize = initialSize * (child->GetRelativeSize() / 100.0f);
             if (child->HandleEvents(std::move(initialPosition), std::move(childSize)))
+            {
                 return true;
+            }
+
             initialPosition.y += child->GetSize().y;
         }
         
