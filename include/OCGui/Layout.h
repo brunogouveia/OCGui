@@ -13,7 +13,7 @@ namespace OCGui
         virtual ~Layout () {}
 
         virtual void Draw(Vec2&& position, Vec2&& size) = 0;
-        virtual bool HandleEvents(Vec2&& position, Vec2&& size) { return false; }
+        virtual bool HandleEvents(Vec2&& position, Vec2&& size) = 0;
         
         inline void AddWidget(Widget* child) { m_children.push_back(child); }
         

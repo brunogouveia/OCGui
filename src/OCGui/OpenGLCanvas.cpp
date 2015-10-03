@@ -88,7 +88,7 @@ namespace OCGui
         m_position = position;
         m_size     = actualSize;
 
-        return false;
+        return Widget::HandleEvents(std::move(position), std::move(size));
     }
 
 } /* OCGui */

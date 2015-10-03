@@ -61,7 +61,7 @@ namespace OCGui {
         m_position = position;
         m_size     = bb.Max - bb.Min + style.FramePadding * 4;
         
-        return m_pressed;
+        return Widget::HandleEvents(std::move(position), std::move(size));
     }
 
 } /* OCGui */

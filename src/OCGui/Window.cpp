@@ -61,26 +61,26 @@ namespace OCGui
     void Window::Draw(Vec2&& position, Vec2&& size)
     {
         // Clear background
-        nvgBeginFrame(ImGui::GetNVGcontext(), m_width, m_height, 2);
-        bndBackground(ImGui::GetNVGcontext(), 0, 0, m_width, m_height);
+        nvgBeginFrame(ImGui::GetNVGcontext(), GetWindowSize().x, GetWindowSize().y, 2);
+        bndBackground(ImGui::GetNVGcontext(), 0, 0, GetWindowSize().x, GetWindowSize().y);
         nvgEndFrame(ImGui::GetNVGcontext());
         
         // Create new ImGui frame
         ImGui_ImplGlfwGL3_NewFrame();
         ImGui::SetWindowPos(ImVec2(0,0));
-        ImGui::SetWindowSize(ImVec2(m_width, m_height));
+        ImGui::SetWindowSize(ImVec2(GetWindowSize().x, GetWindowSize().y));
 
         int display_w, display_h;
         glfwGetFramebufferSize(m_window, &display_w, &display_h);
         glViewport(0, 0, display_w, display_h);
         
         // Begin nvg frame
-        nvgBeginFrame(ImGui::GetNVGcontext(), m_width, m_height, 2);
+        nvgBeginFrame(ImGui::GetNVGcontext(), GetWindowSize().x, GetWindowSize().y, 2);
 
         if (m_content)
         {
-            m_content->HandleEvents(Vec2(0,0), ImVec2(m_width, m_height));
-            m_content->Draw(Vec2(0,0), ImVec2(m_width, m_height));
+            m_content->HandleEvents(Vec2(0,0), ImVec2(GetWindowSize().x, GetWindowSize().y));
+            m_content->Draw(Vec2(0,0), ImVec2(GetWindowSize().x, GetWindowSize().y));
         }
 //        for (std::vector<Widget*>::iterator child = m_children.begin(); child != m_children.end(); child++)
 //        {
