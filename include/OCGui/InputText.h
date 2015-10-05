@@ -49,6 +49,10 @@ namespace OCGui
         char*          m_buffer;
         uint           m_bufferSize;
 
+        Vec2           m_renderPos;
+        Vec2           m_carotPos;
+        BNDwidgetState m_state;
+
         std::function<void(void)> m_enterCallback;
     };
 

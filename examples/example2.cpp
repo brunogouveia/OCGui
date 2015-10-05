@@ -36,22 +36,22 @@ int main(int argc, char const *argv[]) {
     OCGui::OpenGLCanvas*       canvas = new OCGui::OpenGLCanvas("Janelinha", 400, 200);
     OCGui::VBox*          vboxcanvas  = new OCGui::VBox("Canvas layout", canvas);
     canvas->SetContent(vboxcanvas);
-//    OCGui::InputText*          input2 = new OCGui::InputText("Inputssom2", OCGui::InputTextFlags_ReadOnly);
-//    OCGui::InputTextMultiline* input  = new OCGui::InputTextMultiline("Inputssom", OCGui::InputTextFlags_KeepActiveOnEnter, [&] {
-////        static bool f = true;
-//        std::cout << "Input content: " << std::string(input->GetBuffer()) << std::endl;
-//        input2->SetText(std::string(input->GetBuffer()));
-//        input->ClearText();
-//        
-//        
-////        if (f) {
-////            input2->SetFlags(OCGui::InputTextFlags_ReadOnly);
-////        } else {
-////            input2->SetFlags(OCGui::InputTextFlags_None);
-////        }
-////        f = !f;
-//
-//    });
+    OCGui::InputText*         console = new OCGui::InputTextMultiline("Inputssom2", OCGui::InputTextFlags_ReadOnly);
+    OCGui::InputTextMultiline* input  = new OCGui::InputTextMultiline("Inputssom", OCGui::InputTextFlags_KeepActiveOnEnter, [&] {
+//        static bool f = true;
+        std::cout << "Input content: " << std::string(input->GetBuffer()) << std::endl;
+        console->SetText(std::string(input->GetBuffer()));
+        input->ClearText();
+        
+        
+//        if (f) {
+//            input2->SetFlags(OCGui::InputTextFlags_ReadOnly);
+//        } else {
+//            input2->SetFlags(OCGui::InputTextFlags_None);
+//        }
+//        f = !f;
+
+    }, 2048);
 
     canvas->SetDrawCallback([&] (ImVec2 min, ImVec2 max)
     {
@@ -145,30 +145,52 @@ int main(int argc, char const *argv[]) {
         glViewport(0,0,fbWidth,fbHeight);
     });
 
-    vbox->AddWidget(button);
-    vbox->AddWidget(vbox2);
+////    vbox->AddWidget(button);
+//    vbox->AddWidget(vbox2);
+//    vbox->AddWidget(input);
+//    
+//    vbox2->AddWidget(button2);
+//    vbox2->AddWidget(canvas);
+//    
+//    vboxcanvas->AddWidget(button3);
+//    
+//    button->SetRelativeSize(OCGui::Vec2(100,10));
+//    input->SetRelativeSize(OCGui::Vec2(100,40));
+//    vbox2->SetRelativeSize (OCGui::Vec2(100, 50));
+//
+//    button2->SetRelativeSize(OCGui::Vec2(100, 50));
+//    canvas->SetRelativeSize (OCGui::Vec2(100, 50));
     
-    vbox2->AddWidget(button2);
-    vbox2->AddWidget(canvas);
+//    button3->SetRelativeSize(OCGui::Vec2(100,0));
     
-    vboxcanvas->AddWidget(button3);
+    vbox->AddWidget(canvas);
+    vbox->AddWidget(console);
+    vbox->AddWidget(input);
     
-    button->SetRelativeSize(OCGui::Vec2(100,50));
-    vbox2->SetRelativeSize (OCGui::Vec2(100, 50));
+    canvas->SetRelativeSize(OCGui::Vec2(100, 80));
+    console->SetRelativeSize(OCGui::Vec2(100, 10));
+    input->SetRelativeSize(OCGui::Vec2(100,10));
+    
 
-    button2->SetRelativeSize(OCGui::Vec2(100, 50));
-    canvas->SetRelativeSize (OCGui::Vec2(100, 50));
     
-    button3->SetRelativeSize(OCGui::Vec2(100,0));
-
+    int total = 0;
+    int cur = 1;
     while (!window->IsCloseRequested())
     {
         window->HandlGLFWEvents();
         window->Render();
+        
+        if (glfwGetTime() > cur) {
+            printf("FPS: %d\n", total);
+            total = 0;
+            cur = (int)glfwGetTime()+1;
+        }
+        total++;
+        
         window->SwapBuffers();
     }
 
-//    delete input;
+    delete input;
     delete canvas;
     delete button;
     delete button2;

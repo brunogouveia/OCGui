@@ -37,7 +37,7 @@ namespace OCGui
         ImGuiIO& io = ImGui::GetIO();
         //io.Fonts->AddFontDefault();
         // io.Fonts->AddFontFromFileTTF("../extra_fonts/Cousine-Regular.ttf", 15.0f);
-        io.Fonts->AddFontFromFileTTF("../extra_fonts/DroidSans.ttf", 16.0f);
+        io.Fonts->AddFontFromFileTTF("../DejaVuSans.ttf", 13.0f);
 
         // Initialize NVG context
         ImGui::SetNVGcontext(nvgCreateGL3(NVG_ANTIALIAS));
@@ -82,37 +82,6 @@ namespace OCGui
             m_content->HandleEvents(Vec2(0,0), ImVec2(GetWindowSize().x, GetWindowSize().y));
             m_content->Draw(Vec2(0,0), ImVec2(GetWindowSize().x, GetWindowSize().y));
         }
-//        for (std::vector<Widget*>::iterator child = m_children.begin(); child != m_children.end(); child++)
-//        {
-//            (*child)->Draw();
-//
-//            if (ImGui::IsItemHovered()) {
-//                if (ImGui::IsMouseClicked(0)) {
-//                    (*child)->OnMouseClick(MouseEvent());
-//                }
-//                else if (ImGui::IsMouseDown(0)) {
-//                    (*child)->OnMouseDown(MouseEvent());
-//                }
-//                else if (ImGui::IsMouseReleased(0))
-//                {
-//                    (*child)->OnMouseRelease(MouseEvent());
-//                }
-//
-//                // Check for drop event
-//                if(m_childBeingDragged)
-//                {
-//                    if (m_childBeingDragged != (*child))
-//                        (*child)->OnDrop(DropEvent(m_childBeingDragged));
-//                    m_childBeingDragged = NULL;
-//                }
-//
-//            }
-//
-//            if (ImGui::IsItemActive() && ImGui::IsMouseDragging()) {
-//                (*child)->OnDrag(DragEvent(ImGui::GetMouseDragDelta()));
-//                m_childBeingDragged = (*child);
-//            }
-//        }
 
         ImGui::Render();
 

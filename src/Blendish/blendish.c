@@ -124,7 +124,7 @@ static double bnd_fmax ( double a, double b )
 #define BND_MAX_GLYPHS 1024
 
 // max rows for position testing
-#define BND_MAX_ROWS 32
+#define BND_MAX_ROWS 320
 
 // text distance from bottom
 #define BND_TEXT_PAD_DOWN 7
@@ -369,11 +369,14 @@ int bndTextFieldTextPosition(NVGcontext *ctx, float x, float y, float w, float h
         iconid, BND_LABEL_FONT_SIZE, text, px, py);
 }
 
+
 void bndTextField(NVGcontext *ctx,
     float x, float y, float w, float h, int flags, BNDwidgetState state,
     int iconid, const char *text, int cbegin, int cend) {
     float cr[4];
     NVGcolor shade_top, shade_down;
+    
+    nvgScissor(ctx, x, y, w, h);
 
     bndSelectCorners(cr, BND_TEXT_RADIUS, flags);
     bndBevelInset(ctx,x,y,w,h,cr[2],cr[3]);
@@ -387,6 +390,33 @@ void bndTextField(NVGcontext *ctx,
     bndIconLabelCaret(ctx,x,y,w,h,iconid,
         bndTextColor(&bnd_theme.textFieldTheme, state), BND_LABEL_FONT_SIZE,
         text, bnd_theme.textFieldTheme.itemColor, cbegin, cend);
+    
+    nvgResetScissor(ctx);
+}
+
+void bndMultilineTextField(NVGcontext *ctx,
+                  float x, float y, float tx, float ty, float w, float h, int flags, BNDwidgetState state,
+                  int iconid, const char *text, int cbegin, int cend) {
+    float cr[4];
+    NVGcolor shade_top, shade_down;
+    
+    nvgScissor(ctx, x, y, w, h);
+    
+    bndSelectCorners(cr, BND_TEXT_RADIUS, flags);
+    bndBevelInset(ctx,x,y,w,h,cr[2],cr[3]);
+    bndInnerColors(&shade_top, &shade_down, &bnd_theme.textFieldTheme, state, 0);
+    bndInnerBox(ctx,x,y,w,h,cr[0],cr[1],cr[2],cr[3], shade_top, shade_down);
+    bndOutlineBox(ctx,x,y,w,h,cr[0],cr[1],cr[2],cr[3],
+                  bndTransparent(bnd_theme.textFieldTheme.outlineColor));
+    if (state != BND_ACTIVE) {
+        cend = -1;
+    }
+    nvgScissor(ctx, x + 2, y + 2, w - 6, h - 6);
+    bndIconLabelCaret(ctx,tx,ty,w,h,iconid,
+                      bndTextColor(&bnd_theme.textFieldTheme, state), BND_LABEL_FONT_SIZE,
+                      text, bnd_theme.textFieldTheme.itemColor, cbegin, cend);
+    
+    nvgResetScissor(ctx);
 }
 
 void bndOptionButton(NVGcontext *ctx,
@@ -1159,6 +1189,7 @@ static void bndCaretPosition(NVGcontext *ctx, float x, float y,
 void bndIconLabelCaret(NVGcontext *ctx, float x, float y, float w, float h,
     int iconid, NVGcolor color, float fontsize, const char *label,
     NVGcolor caretcolor, int cbegin, int cend) {
+    
     float pleft = BND_TEXT_RADIUS;
     if (!label) return;
     if (iconid >= 0) {

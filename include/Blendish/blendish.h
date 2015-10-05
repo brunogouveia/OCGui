@@ -824,6 +824,10 @@ BND_EXPORT void bndTextField(NVGcontext *ctx,
     float x, float y, float w, float h, int flags, BNDwidgetState state,
     int iconid, const char *text, int cbegin, int cend);
 
+BND_EXPORT void bndMultilineTextField(NVGcontext *ctx,
+                                 float x, float y, float tx, float ty, float w, float h, int flags, BNDwidgetState state,
+                                 int iconid, const char *text, int cbegin, int cend);
+    
 // Draw an option button with its lower left origin at (x,y) and size of (w,h),
 // where flags is one or multiple flags from BNDcornerFlags and state denotes
 // the widgets current UI state.

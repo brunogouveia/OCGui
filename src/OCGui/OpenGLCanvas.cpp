@@ -80,10 +80,6 @@ namespace OCGui
             }
         }
         
-        if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0)) {
-            std::cout << "Canvas clicked" << std::endl;
-        }
-        
         // Update position and size
         m_position = position;
         m_size     = actualSize;
