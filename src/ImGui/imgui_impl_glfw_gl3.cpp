@@ -129,6 +129,14 @@ void ImGui_ImplGlfwGL3_KeyCallback(GLFWwindow*, int key, int, int action, int mo
         io.KeysDown[key] = true;
     if (action == GLFW_RELEASE)
         io.KeysDown[key] = false;
+    
+    if (key == GLFW_KEY_APOSTROPHE ) {
+        if (io.KeysDown[GLFW_KEY_LEFT_SHIFT] || io.KeysDown[GLFW_KEY_RIGHT_SHIFT]) {
+            io.AddInputCharacter((unsigned short)34);
+        } else {
+            io.AddInputCharacter((unsigned short)GLFW_KEY_APOSTROPHE);
+        }
+    }
 
     (void)mods; // Modifiers are not reliable across systems
     io.KeyCtrl = io.KeysDown[GLFW_KEY_LEFT_CONTROL] || io.KeysDown[GLFW_KEY_RIGHT_CONTROL];
