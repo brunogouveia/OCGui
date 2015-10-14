@@ -30,31 +30,41 @@ namespace OCGui
         InputTextFlags_Multiline           = 1 << 20   // For internal use by InputTextMultiline()
     } InputTextFlags;
 
-    class InputText: public Widget
+    bool InputText(const String& label, const Rect& rect, char* buf, int buf_size);
+    bool InputTextMultiline(const String& label, const Rect& rect, char* buf, int buf_size);
+    
+    
+    namespace Layout
     {
-    public:
-        InputText (std::string&& label, InputTextFlags flags = InputTextFlags_None, std::function<void(void)> enterCallback = [](){}, uint bufferSize = 512);
-        virtual ~InputText ();
-
-        virtual void Draw(Vec2&& position, Vec2&& size);
-        virtual bool HandleEvents(Vec2&& position, Vec2&& size);
-        
-        virtual void ClearText();
-        virtual void SetText(std::string&& text);
-        virtual void SetFlags(InputTextFlags flags) { m_flags = flags; }
-        const char* GetBuffer() const { return m_buffer; }
-
-    protected:
-        InputTextFlags m_flags;
-        char*          m_buffer;
-        uint           m_bufferSize;
-
-        Vec2           m_renderPos;
-        Vec2           m_carotPos;
-        BNDwidgetState m_state;
-
-        std::function<void(void)> m_enterCallback;
-    };
+        bool InputText(const String& label, const Size& rect, char* buf, int buf_size, ImGuiInputTextFlags flags = ImGuiInputTextFlags_None);
+        bool InputTextMultiline(const String& label, const Size& rect, char* buf, int buf_size, ImGuiInputTextFlags flags = ImGuiInputTextFlags_None);
+    }
+    
+//    class InputText: public Widget
+//    {
+//    public:
+//        InputText (std::string&& label, InputTextFlags flags = InputTextFlags_None, std::function<void(void)> enterCallback = [](){}, uint bufferSize = 512);
+//        virtual ~InputText ();
+//
+//        virtual void Draw(Vec2&& position, Vec2&& size);
+//        virtual bool HandleEvents(Vec2&& position, Vec2&& size);
+//        
+//        virtual void ClearText();
+//        virtual void SetText(std::string&& text);
+//        virtual void SetFlags(InputTextFlags flags) { m_flags = flags; }
+//        const char* GetBuffer() const { return m_buffer; }
+//
+//    protected:
+//        InputTextFlags m_flags;
+//        char*          m_buffer;
+//        uint           m_bufferSize;
+//
+//        Vec2           m_renderPos;
+//        Vec2           m_carotPos;
+//        BNDwidgetState m_state;
+//
+//        std::function<void(void)> m_enterCallback;
+//    };
 
 } /* OCGui */
 

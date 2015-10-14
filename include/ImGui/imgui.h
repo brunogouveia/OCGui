@@ -486,6 +486,7 @@ enum ImGuiWindowFlags_
 enum ImGuiInputTextFlags_
 {
     // Default: 0
+    ImGuiInputTextFlags_None                = 0,        // None flag
     ImGuiInputTextFlags_CharsDecimal        = 1 << 0,   // Allow 0123456789.+-*/
     ImGuiInputTextFlags_CharsHexadecimal    = 1 << 1,   // Allow 0123456789ABCDEFabcdef
     ImGuiInputTextFlags_CharsUppercase      = 1 << 2,   // Turn a..z into A..Z
@@ -582,6 +583,7 @@ enum ImGuiCol_
     ImGuiCol_PlotHistogram,
     ImGuiCol_PlotHistogramHovered,
     ImGuiCol_TextSelectedBg,
+    ImGuiCol_TextCursor,
     ImGuiCol_TooltipBg,
     ImGuiCol_ModalWindowDarkening,  // darken entire screen when a modal window is active
     ImGuiCol_COUNT

@@ -81,6 +81,22 @@ void ImGui_ImplGlfwGL3_RenderDrawLists(ImDrawData* draw_data)
             if (pcmd->UserCallback)
             {
                 pcmd->UserCallback(cmd_list, pcmd);
+                glEnable(GL_BLEND);
+                glBlendEquation(GL_FUNC_ADD);
+                glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+                glDisable(GL_CULL_FACE);
+                glDisable(GL_DEPTH_TEST);
+                glEnable(GL_SCISSOR_TEST);
+                glActiveTexture(GL_TEXTURE0);
+                glUseProgram(g_ShaderHandle);
+                glUniform1i(g_AttribLocationTex, 0);
+                glUniformMatrix4fv(g_AttribLocationProjMtx, 1, GL_FALSE, &ortho_projection[0][0]);
+                glBindVertexArray(g_VaoHandle);
+                glBindBuffer(GL_ARRAY_BUFFER, g_VboHandle);
+                glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr)cmd_list->VtxBuffer.size() * sizeof(ImDrawVert), (GLvoid*)&cmd_list->VtxBuffer.front(), GL_STREAM_DRAW);
+                
+                glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, g_ElementsHandle);
+                glBufferData(GL_ELEMENT_ARRAY_BUFFER, (GLsizeiptr)cmd_list->IdxBuffer.size() * sizeof(ImDrawIdx), (GLvoid*)&cmd_list->IdxBuffer.front(), GL_STREAM_DRAW);
             }
             else
             {
