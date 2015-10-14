@@ -1,6 +1,7 @@
 #ifdef OCGUI_IMPLEMENTATION__
 
 #include <OCGui/Widget.h>
+#include <map>
 
 namespace OCGui
 {
@@ -119,6 +120,32 @@ namespace OCGui
         int w, h;
         glfwGetFramebufferSize(g_window, &w, &h);
         return Size(w, h);
+    }
+
+    // Multi-thread
+    std::map<String,GLFWwindow*> g_contextMap;
+
+    GLFWwindow* CreateContext(String name)
+    {
+        GLFWwindow *newWindow = glfwCreateWindow(1, 1, name.c_str(), nullptr, g_window);
+        g_contextMap.insert(std::pair<String, GLFWwindow*>(name, newWindow));
+        return newWindow;
+    }
+
+    GLFWwindow* GetContext(String name)
+    {
+        // This return NULL, when the value is not found.
+        return g_contextMap[name];
+    }
+
+    void MakeContextCurrent(String name)
+    {
+        glfwMakeContextCurrent(g_contextMap[name]);
+    }
+
+    void DestroyContext(String name)
+    {
+        glfwDestroyWindow(g_contextMap[name]);
     }
 
 } /* OCGui */

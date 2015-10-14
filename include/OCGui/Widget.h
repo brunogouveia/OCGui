@@ -33,6 +33,12 @@ namespace OCGui
     Size GetWindowSize();
     Size GetFramebufferSize();
 
+    // Multi-thread API
+    GLFWwindow* CreateContext(String name);
+    GLFWwindow* GetContext(String name);
+    void MakeContextCurrent(String name);
+    void DestroyContext(String name);
+
 }
 
 #endif
